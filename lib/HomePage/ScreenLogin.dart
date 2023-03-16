@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
   class LoginScreen extends StatelessWidget {
     const LoginScreen({Key? key}) : super(key: key);
@@ -10,7 +11,7 @@ import 'package:flutter/material.dart';
             children: [
               ElevatedButton(
                   onPressed: () {
-
+                    FirebaseAuth.instance.signOut();
                   },
                   child: Text('Logout')),
             ],
