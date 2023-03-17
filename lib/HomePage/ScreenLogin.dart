@@ -13,7 +13,7 @@ import 'package:flutter/material.dart';
                   onPressed: () {
                     FirebaseAuth.instance.signOut();
                   },
-                  child: Text('Logout')),
+                  child: Text('Đăng Xuất')),
             ],
           ),
 

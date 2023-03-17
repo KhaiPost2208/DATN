@@ -55,13 +55,18 @@ class _HomePageState extends State<HomePage> {
                 padding: EdgeInsets.all(10),
                 child: TextFormField(
                   // controller: passwordController,
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                     labelText: ("Mật khẩu"),
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(20))),
                   ),
-
-
+                  // validator: (value) {
+                  //   if (value != null && value.length < 6) {
+                  //     return 'Vui lòng nhập trên 6 kí tự';
+                  //   } else {
+                  //     return null;
+                  //   }
+                  // },
                 ),
               ),
               SizedBox(height: 10),
