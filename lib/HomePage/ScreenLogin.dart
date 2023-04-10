@@ -13,10 +13,10 @@ import 'package:flutter/material.dart';
                   onPressed: () {
                     FirebaseAuth.instance.signOut();
                   },
-                  child: Text('Đăng Xuất')),
+                  child: Text('Đăng Xuất')
+              ),
             ],
           ),
-
         ),
       );
     }
