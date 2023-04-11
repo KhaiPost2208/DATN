@@ -94,7 +94,11 @@ class HomePage extends StatelessWidget {
         ]),
         child: FloatingActionButton(
           onPressed: () {
-            Get.to(CartPage());
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const CartPage()),
+            );
+            // Get.to(CartPage());
           },
           child: Icon(
             CupertinoIcons.cart,
