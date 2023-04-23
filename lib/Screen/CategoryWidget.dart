@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:zoom_tap_animation/zoom_tap_animation.dart';
+
+import 'Soban.dart';
 
 class CategoryWidget extends StatelessWidget {
   const CategoryWidget({Key? key}) : super(key: key);
@@ -16,7 +20,41 @@ class CategoryWidget extends StatelessWidget {
                 padding: EdgeInsets.symmetric(horizontal: 10),
                 child: Column(
                   children: [
-                    Container(
+                    ZoomTapAnimation(
+                      child: Container(
+                        padding: EdgeInsets.all(8),
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(10),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.grey.withOpacity(0.5),
+                              spreadRadius: 2,
+                              blurRadius: 10,
+                              offset: Offset(0, 3),
+                            )
+                          ],
+                        ),
+                        child: Image.asset(
+                          'assets/banhmi.png',
+                          width: 60,
+                          height: 60,
+                        ),
+                      ),
+                    ),
+                    SizedBox(height: 10),
+                    Text('Bánh Mì'),
+                  ],
+                ),
+              ),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 10),
+              child: Column(
+                children: [
+                  ZoomTapAnimation(
+                    onTap: ()  {
+                    },
+                    child: Container(
                       padding: EdgeInsets.all(8),
                       decoration: BoxDecoration(
                         color: Colors.white,
@@ -31,38 +69,10 @@ class CategoryWidget extends StatelessWidget {
                         ],
                       ),
                       child: Image.asset(
-                        'assets/banhmi.png',
+                        'assets/pho.png',
                         width: 60,
                         height: 60,
                       ),
-                    ),
-                    SizedBox(height: 10),
-                    Text('Bánh Mì'),
-                  ],
-                ),
-              ),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 10),
-              child: Column(
-                children: [
-                  Container(
-                    padding: EdgeInsets.all(8),
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(10),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.grey.withOpacity(0.5),
-                          spreadRadius: 2,
-                          blurRadius: 10,
-                          offset: Offset(0, 3),
-                        )
-                      ],
-                    ),
-                    child: Image.asset(
-                      'assets/pho.png',
-                      width: 60,
-                      height: 60,
                     ),
                   ),
                   SizedBox(height: 10),

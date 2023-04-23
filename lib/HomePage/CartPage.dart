@@ -15,7 +15,7 @@ class CartPage extends StatelessWidget {
               padding: EdgeInsets.symmetric(horizontal: 10),
               child: Column(
                 children: [
-                  AppBarWidget(),
+                  appBarCart(),
                   Padding(
                     padding: EdgeInsets.only(top: 20, left: 10, bottom: 10),
                     child: Text(
@@ -43,7 +43,6 @@ class CartPage extends StatelessWidget {
                       ),
                       child: Row(
                         children: [
-
                         ],
                       ),
                     ),

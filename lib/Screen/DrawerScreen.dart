@@ -1,8 +1,11 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:zoom_tap_animation/zoom_tap_animation.dart';
 
+import '../HomePage/CartPage.dart';
 import '../HomePage/CreateAccount.dart';
 
 class DrawerWidget extends StatelessWidget {
@@ -13,7 +16,7 @@ class DrawerWidget extends StatelessWidget {
     return Drawer(
       child: ListView(
         children: [
-          DrawerHeader(
+          const DrawerHeader(
               padding: EdgeInsets.zero,
               child: UserAccountsDrawerHeader(
                 decoration: BoxDecoration(
@@ -29,7 +32,7 @@ class DrawerWidget extends StatelessWidget {
           ZoomTapAnimation(
             onTap: () {
             },
-            child: ListTile(
+            child: const ListTile(
               leading: Icon(
                 CupertinoIcons.home,
               ),
@@ -40,6 +43,9 @@ class DrawerWidget extends StatelessWidget {
             ),
           ),
           ZoomTapAnimation(
+            onTap: () {
+              Get.to(CartPage());
+            },
             child: ListTile(
               leading: Icon(
                 CupertinoIcons.cart,
@@ -54,7 +60,7 @@ class DrawerWidget extends StatelessWidget {
             onTap: () {
               FirebaseAuth.instance.signOut();
             },
-            child: ListTile(
+            child: const ListTile(
               leading: Icon(
                 CupertinoIcons.arrow_left,
               ),
