@@ -8,6 +8,8 @@ import 'package:get/get_core/src/get_main.dart';
 import '../HomePage/CartPage.dart';
 import '../HomePage/ScreenLogin.dart';
 import 'AppBarWidget.dart';
+import 'Drink.dart';
+import 'Menu.dart';
 import 'Soban.dart';
 
 class HomePage extends StatelessWidget {
@@ -71,6 +73,37 @@ class HomePage extends StatelessWidget {
             ),
           ),
           CategoryWidget(),
+          Container(
+            child: Row(
+              children: [
+                Column(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(top: 10, left: 10),
+                      child: Text(
+                        'Nước Uống',
+                        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                      ),
+                    ),
+                    MenuDrink(),
+                  ],
+                ),
+                Column(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(top: 10, left: 10),
+                      child: Text(
+                        'Gọi Thêm',
+                        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                      ),
+                    ),
+                    MenuPlus(),
+                  ],
+                ),
+              ],
+            ),
+          ),
+          // MenuPlus(),
           Padding(
             padding: const EdgeInsets.only(top: 20, left: 10),
             child: Text(
