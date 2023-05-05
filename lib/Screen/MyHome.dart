@@ -1,5 +1,6 @@
 import 'package:appdatn/Screen/CategoryWidget.dart';
 import 'package:appdatn/Screen/DrawerScreen.dart';
+import 'package:appdatn/Screen/MenuBanhMi.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -112,6 +113,14 @@ class HomePage extends StatelessWidget {
             ),
           ),
           TableNumber(),
+          Padding(
+            padding: const EdgeInsets.only(top: 20, left: 10),
+            child: Text(
+              'Ưa thích',
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+            ),
+          ),
+          MenuBanhMi(),
         ],
       ),
       drawer: DrawerWidget(),
