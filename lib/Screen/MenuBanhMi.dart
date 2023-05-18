@@ -10,7 +10,7 @@ class MenuBanhMi extends StatelessWidget {
       scrollDirection: Axis.horizontal,
       child: Padding(
         padding: EdgeInsets.symmetric(vertical: 15, horizontal: 5),
-        child: Row(
+        child: Column(
           children: [
             // for (int i=0; i<5; i++)
             Padding(
