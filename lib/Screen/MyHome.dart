@@ -105,8 +105,6 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
         CategoryWidget(),
-        // MenuBanhMi(),
-
       ],
     ),
     Container(
