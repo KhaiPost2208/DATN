@@ -2,6 +2,7 @@ import 'package:appdatn/Screen/CategoryWidget.dart';
 import 'package:appdatn/Screen/DrawerScreen.dart';
 import 'package:appdatn/Screen/MenuBanhMi.dart';
 import 'package:appdatn/Screen/Tabbar.dart';
+import 'package:appdatn/presentations/food_list/food_list_screen.dart';
 import 'package:buttons_tabbar/buttons_tabbar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
@@ -53,9 +54,14 @@ class _HomePageState extends State<HomePage> {
               ),
               child: Row(
                 children: [
-                  Icon(
-                    CupertinoIcons.search,
-                    color: Colors.black,
+                  InkWell(
+                    onTap: () {
+                      Get.to(FoodListScreen());
+                    },
+                    child: Icon(
+                      CupertinoIcons.search,
+                      color: Colors.black,
+                    ),
                   ),
                   Container(
                     height: 50,
@@ -92,7 +98,10 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
         Information(),
-        Image.asset('assets/thaytam.png', height: 320,),
+        Image.asset(
+          'assets/thaytam.png',
+          height: 320,
+        ),
       ],
     ),
     ListView(
