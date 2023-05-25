@@ -1,3 +1,4 @@
+import 'package:appdatn/presentations/food_detail/food_detail_screen.dart';
 import 'package:appdatn/presentations/food_list/food_list_controller.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
@@ -31,8 +32,22 @@ class FoodListScreen extends StatelessWidget {
               itemCount: controller.listFood.value.length,
               itemBuilder: (context, index) {
                 return Card(
-                  child: Container(
-                    child: _buildItemAtIndex(index),
+                  child: InkWell(
+                    onTap: () {
+                      var food = controller.listFood.value[index];
+                      // Get.to(
+                      //   () => FoodDetailScreen(),
+                      //   arguments: {"FOOD": food, "NAME": food.name},
+                      // );
+
+                      Get.to(
+                        () => FoodDetailScreen(),
+                        arguments: food,
+                      );
+                    },
+                    child: Container(
+                      child: _buildItemAtIndex(index),
+                    ),
                   ),
                 );
               },
@@ -50,8 +65,8 @@ class FoodListScreen extends StatelessWidget {
       child: Row(
         children: [
           ImageNetwork(
-            image: food.thumb,
-            imageCache: CachedNetworkImageProvider(food.thumb),
+            image: food.thumb ?? "",
+            imageCache: CachedNetworkImageProvider(food.thumb ?? ""),
             height: 80,
             width: 80,
             fitAndroidIos: BoxFit.cover,
@@ -65,7 +80,7 @@ class FoodListScreen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  food.name,
+                  food.name ?? "",
                   style: TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
@@ -76,7 +91,7 @@ class FoodListScreen extends StatelessWidget {
                 ),
                 Flexible(
                   child: Text(
-                    food.desc,
+                    food.desc ?? "",
                     overflow: TextOverflow.ellipsis,
                     maxLines: 2,
                   ),
@@ -88,7 +103,7 @@ class FoodListScreen extends StatelessWidget {
             alignment: Alignment.center,
             padding: EdgeInsets.all(10),
             child: Text(
-              food.priceFormat,
+              food.priceFormat ?? "",
               style: TextStyle(
                 fontSize: 14,
                 fontWeight: FontWeight.bold,
