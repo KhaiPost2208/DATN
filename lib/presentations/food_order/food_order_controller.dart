@@ -9,14 +9,23 @@ class FoodOrderController extends GetxController {
   Future<void> onInit() async {
     super.onInit();
 
-    listFood.value = await getDataFood();
+    getDataCoffee();
+  }
+
+  Future<void> getDataCoffee() async {
+    listFood.value = await getDataFood('coffee');
     listFood.refresh();
   }
 
-  Future<List<Food>> getDataFood() async {
+  Future<void> getDataCloudFee() async {
+    listFood.value = await getDataFood('cloudfee');
+    listFood.refresh();
+  }
+
+  Future<List<Food>> getDataFood(String collectionId) async {
     var list = <Food>[];
     await FirebaseFirestore.instance
-        .collection('coffee')
+        .collection(collectionId)
         .get()
         .then((QuerySnapshot querySnapshot) {
       querySnapshot.docs.forEach((doc) {
@@ -36,18 +45,5 @@ class FoodOrderController extends GetxController {
     });
 
     return list;
-
-    // FirebaseFirestore.instance
-    //     .collection('coffee')
-    //     .doc('caphe-sua-da')
-    //     .get()
-    //     .then((DocumentSnapshot documentSnapshot) {
-    //   documentSnapshot.data();
-    //   if (documentSnapshot.exists) {
-    //     print('Document data: ${documentSnapshot.data()}');
-    //   } else {
-    //     print('Document does not exist on the database');
-    //   }
-    // });
   }
 }

@@ -13,11 +13,65 @@ class FoodOrderScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Oder"),
+        title: Text(
+          "Danh Sách",
+          style: TextStyle(
+            color: Colors.black,
+          ),
+        ),
+        backgroundColor: Colors.white,
       ),
       body: Container(
         color: Colors.white,
-        child: _buildBody(),
+        child: Column(
+          children: [
+            _buildCategory(),
+            Expanded(
+              child: Obx(
+                () => _buildBody(),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildCategory() {
+    return Container(
+      padding: EdgeInsets.all(12),
+      child: Column(
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              // caphe
+              InkWell(
+                onTap: () {
+                  controller.getDataCoffee();
+                },
+                child: _buildItemCategory(
+                  'assets/menu_coffee.png',
+                  "Cà Phê",
+                ),
+              ),
+
+              // menu_cloud_fee
+              InkWell(
+                onTap: () {
+                  controller.getDataCloudFee();
+                },
+                child: _buildItemCategory(
+                  'assets/menu_cloud_fee.png',
+                  "Cloud Fee",
+                ),
+              ),
+
+              // menu_cloud_tea
+              _buildItemCategory('assets/menu_cloud_tea.png', "Cloud Tea"),
+            ],
+          )
+        ],
       ),
     );
   }
@@ -72,28 +126,31 @@ class FoodOrderScreen extends StatelessWidget {
             ),
           ),
           Expanded(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  food.name ?? "",
-                  style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black),
-                ),
-                SizedBox(
-                  height: 10,
-                ),
-                Flexible(
-                  child: Text(
-                    food.desc ?? "",
-                    overflow: TextOverflow.ellipsis,
-                    maxLines: 2,
+            child: Container(
+              padding: EdgeInsets.all(12),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    food.name ?? "",
+                    style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black),
                   ),
-                )
-              ],
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Flexible(
+                    child: Text(
+                      food.desc ?? "",
+                      overflow: TextOverflow.ellipsis,
+                      maxLines: 2,
+                    ),
+                  )
+                ],
+              ),
             ),
           ),
           Container(
@@ -110,6 +167,24 @@ class FoodOrderScreen extends StatelessWidget {
           ),
         ],
       ),
+    );
+  }
+
+  Widget _buildItemCategory(String imageName, String title) {
+    return Column(
+      children: [
+        Image.asset(
+          imageName,
+          height: 60,
+        ),
+        Text(
+          title,
+          style: TextStyle(
+            fontWeight: FontWeight.normal,
+            color: Colors.black,
+          ),
+        ),
+      ],
     );
   }
 }
