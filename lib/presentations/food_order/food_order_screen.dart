@@ -6,7 +6,7 @@ import 'package:image_network/image_network.dart';
 import '../food_detail/food_detail_screen.dart';
 import 'food_order_controller.dart';
 
-class FoodOrderScreen extends StatelessWidget {
+class nguyenFoodOrderScreen extends StatelessWidget {
   final controller = Get.put(FoodOrderController());
 
   @override

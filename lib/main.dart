@@ -16,7 +16,6 @@ Future<void> main() async {
   FirebaseFirestore.instance;
   runApp(const MyApp());
 }
-
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
@@ -44,7 +43,7 @@ class MyApp extends StatelessWidget {
       //     }
       //   },
       // ),
-      home: FoodOrderScreen(),
+      home: HomePage(),
     );
   }
 }
