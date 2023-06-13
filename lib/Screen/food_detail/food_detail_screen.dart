@@ -82,13 +82,14 @@ class FoodDetailScreen extends StatelessWidget {
                     color: Colors.grey,
                     width: 1,
                   ),
-                  borderRadius: BorderRadius.circular(5),
+                  borderRadius: BorderRadius.circular(8),
                 ),
               ),
             ),
           ),
           Container(
-            width: 50,
+            width: 30,
+            height: 30,
             alignment: Alignment.center,
             child: Text(controller.quantity.value.toString(),
                 style: TextStyle(
@@ -127,7 +128,7 @@ class FoodDetailScreen extends StatelessWidget {
   Widget _buildPrice() {
     return Container(
       height: 50,
-      width: 200,
+      width: 150,
       //color: Colors.red,
       alignment: Alignment.center,
       margin: EdgeInsets.only(left: 20, right: 20),
@@ -146,7 +147,7 @@ class FoodDetailScreen extends StatelessWidget {
             ),
           ),
           SizedBox(
-            width: 10,
+            width: 8,
           ),
           Text(
             controller.price.toString(),
@@ -156,10 +157,10 @@ class FoodDetailScreen extends StatelessWidget {
             ),
           ),
           SizedBox(
-            width: 10,
+            width: 8,
           ),
           Text(
-            'vnd',
+            'vnđ',
             style: TextStyle(
               color: Colors.white,
               fontSize: 16,

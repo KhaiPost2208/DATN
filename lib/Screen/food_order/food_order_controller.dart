@@ -15,14 +15,14 @@ class FoodOrderController extends GetxController {
     super.onInit();
 
     listCategory.value = [
-      //CategoryType.BANH_MI,
+      CategoryType.BANH_MI,
       CategoryType.PHO,
       CategoryType.BANH_CANH,
       CategoryType.BANH_XEO,
       CategoryType.BUN_BO,
       CategoryType.HU_TIEU,
       CategoryType.BUN_RIEU,
-      CategoryType.MI_QUANG
+      CategoryType.MI_QUANG,
     ];
     listCategory.refresh();
 
@@ -79,7 +79,7 @@ class FoodOrderController extends GetxController {
     } else if (categoryType == CategoryType.PHO) {
       return 'pho';
     } else if (categoryType == CategoryType.BANH_CANH) {
-      return 'mi_quang';
+      return 'banh_canh_cua';
     } else if (categoryType == CategoryType.BANH_XEO) {
       return 'banh_xeo';
     } else if (categoryType == CategoryType.BUN_BO) {
@@ -117,11 +117,11 @@ class FoodOrderController extends GetxController {
         var name = doc["name"];
         var price = doc["price"];
         var priceFormat = doc["price_formart"];
-        //var desc = doc["desc"];
+        // var desc = doc["desc"];
         var thumb = doc["thumb"];
         var food = Food(
           name: name,
-          //desc: desc,
+          // desc: desc,
           thumb: thumb,
           price: price,
           priceFormat: priceFormat,

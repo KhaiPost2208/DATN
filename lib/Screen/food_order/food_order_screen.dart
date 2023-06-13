@@ -9,6 +9,7 @@ import 'package:get/get.dart';
 import 'package:image_network/image_network.dart';
 import 'food_order_controller.dart';
 
+
 class FoodOrderScreen extends StatelessWidget {
   final controller = Get.put(FoodOrderController());
 
@@ -16,7 +17,7 @@ class FoodOrderScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return FocusDetector(
       onFocusGained: () {
-        Get.bottomSheet(FoodTableScreen());
+        // Get.bottomSheet(FoodTableScreen()); // Tắt chế độ BottonSheet
       },
       child: Scaffold(
         // appBar: AppBar(
@@ -101,8 +102,8 @@ class FoodOrderScreen extends StatelessWidget {
 
   Widget _buildCategory() {
     return Container(
-      padding: EdgeInsets.all(12),
-      height: 150,
+      padding: EdgeInsets.only(top: 10,left: 8, right: 8),
+      height: 120,
       color: Colors.white,
       alignment: Alignment.center,
       child: ListView.builder(
@@ -123,7 +124,6 @@ class FoodOrderScreen extends StatelessWidget {
 
   Widget _buildCategoryItem(CategoryType categoryType, int index) {
     return Container(
-      height: 150,
       width: 100,
       alignment: Alignment.center,
       child: Column(
@@ -193,61 +193,64 @@ class FoodOrderScreen extends StatelessWidget {
 
   Widget _buildItemAtIndex(int index) {
     var food = controller.listFood.value[index];
-    return Container(
-      height: 100,
-      child: Row(
-        children: [
-          ImageNetwork(
-            image: food.thumb ?? "",
-            imageCache: CachedNetworkImageProvider(food.thumb ?? ""),
-            height: 80,
-            width: 80,
-            fitAndroidIos: BoxFit.cover,
-            onLoading: const CircularProgressIndicator(
-              color: Colors.indigoAccent,
+    return Padding(
+      padding: EdgeInsets.only(left: 8, right: 8),
+      child: Container(
+        height: 100,
+        child: Row(
+          children: [
+            ImageNetwork(
+              image: food.thumb ?? "",
+              imageCache: CachedNetworkImageProvider(food.thumb ?? ""),
+              height: 90,
+              width: 90,
+              fitAndroidIos: BoxFit.cover,
+              onLoading: const CircularProgressIndicator(
+                color: Colors.indigoAccent,
+              ),
             ),
-          ),
-          Expanded(
-            child: Container(
-              padding: EdgeInsets.all(12),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    food.name ?? "",
-                    style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.black),
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Flexible(
-                    child: Text(
-                      food.desc ?? "",
-                      overflow: TextOverflow.ellipsis,
-                      maxLines: 2,
+            Expanded(
+              child: Container(
+                padding: EdgeInsets.all(12),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      food.name ?? "",
+                      style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black),
                     ),
-                  )
-                ],
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Flexible(
+                      child: Text(
+                        food.desc ?? "",
+                        overflow: TextOverflow.ellipsis,
+                        maxLines: 2,
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
-          ),
-          Container(
-            alignment: Alignment.center,
-            padding: EdgeInsets.all(10),
-            child: Text(
-              food.priceFormat ?? "",
-              style: TextStyle(
-                fontSize: 14,
-                fontWeight: FontWeight.bold,
-                color: Colors.black,
+            Container(
+              alignment: Alignment.center,
+              padding: EdgeInsets.all(10),
+              child: Text(
+                food.priceFormat ?? "",
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.black,
+                ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

@@ -9,4 +9,5 @@ enum CategoryType {
   HU_TIEU,
   BUN_RIEU,
   MI_QUANG,
+  NUOC_UONG,
 }
