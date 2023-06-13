@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:carousel_pro/carousel_pro.dart';
 import 'package:zoom_tap_animation/zoom_tap_animation.dart';
 
 import '../HomePage/MyHome.dart';
+
 class SkipScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -11,19 +11,19 @@ class SkipScreen extends StatelessWidget {
         children: [
           Container(
             height: double.infinity,
-            child: Carousel(
-              animationDuration: Duration(seconds: 2),
-              autoplay: true,
-              boxFit: BoxFit.cover,
-              dotBgColor: Colors.transparent,
-              dotIncreasedColor: Theme.of(context).primaryColor,
-              dotSize: 10,
-              images: [
-                AssetImage("images/imageslider1.jpg"),
-                AssetImage("images/imageslider2.jpg"),
-                AssetImage("images/imageslider3.jpg"),
-              ],
-            ),
+            // child: Carousel(
+            //   animationDuration: Duration(seconds: 2),
+            //   autoplay: true,
+            //   boxFit: BoxFit.cover,
+            //   dotBgColor: Colors.transparent,
+            //   dotIncreasedColor: Theme.of(context).primaryColor,
+            //   dotSize: 10,
+            //   images: [
+            //     AssetImage("images/imageslider1.jpg"),
+            //     AssetImage("images/imageslider2.jpg"),
+            //     AssetImage("images/imageslider3.jpg"),
+            //   ],
+            // ),
           ),
           Align(
             alignment: Alignment.bottomCenter,

@@ -1,4 +1,5 @@
 import 'package:appdatn/HomePage/CartPage.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -9,6 +10,7 @@ import 'Screen/HomePage/MyHome.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+  FirebaseFirestore.instance;
   runApp(const MyApp());
 }
 
@@ -31,7 +33,7 @@ class MyApp extends StatelessWidget {
       // home: const AppBarWidget(),
       home: StreamBuilder<User?>(
         stream: FirebaseAuth.instance.authStateChanges(),
-        builder: (context, snapshot){
+        builder: (context, snapshot) {
           if (snapshot.hasData) {
             return HomePage();
           } else {
@@ -42,4 +44,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-
