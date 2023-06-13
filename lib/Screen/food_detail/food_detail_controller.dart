@@ -1,4 +1,5 @@
 import 'package:appdatn/entity/food.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:get/get.dart';
 
 class FoodDetailController extends GetxController {
@@ -37,5 +38,23 @@ class FoodDetailController extends GetxController {
       quantity.value--;
       price.value = (food.value?.price ?? 0) * quantity.value;
     }
+  }
+
+  void addFoodToFirebase() async {
+    CollectionReference foodOrder =
+        await FirebaseFirestore.instance.collection('food_order');
+
+    var docId = '${food.value?.name}_${DateTime.now().toString()}';
+    foodOrder
+        .doc(docId)
+        .set(
+          {
+            'name': food.value?.name ?? '',
+            'quantity': quantity.value,
+            'price': price.value,
+          },
+        )
+        .then((value) => print("Food Added"))
+        .catchError((error) => print("Failed to add food: $error"));
   }
 }

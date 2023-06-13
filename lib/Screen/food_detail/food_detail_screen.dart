@@ -51,7 +51,12 @@ class FoodDetailScreen extends StatelessWidget {
               Expanded(
                 child: _buildQuantity(),
               ),
-              _buildPrice(),
+              InkWell(
+                onTap: () {
+                  controller.addFoodToFirebase();
+                },
+                child: _buildPrice(),
+              ),
             ],
           ),
         ),
