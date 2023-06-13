@@ -1,6 +1,7 @@
 import 'package:appdatn/Screen/HomePage/CategoryWidget.dart';
 import 'package:appdatn/Screen/MenuFood/MenuBanhMi.dart';
 import 'package:appdatn/Screen/TabbarView/Tabbar.dart';
+import 'package:appdatn/Screen/food_order/food_order_screen.dart';
 import 'package:buttons_tabbar/buttons_tabbar.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
@@ -87,10 +88,15 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
         Information(),
-        Image.asset('assets/thaytam.png', height: 320,),
+        Image.asset(
+          'assets/thaytam.png',
+          height: 320,
+        ),
       ],
     ),
-    HomeTopTabs(),
+    //HomeTopTabs(),
+    FoodOrderScreen(),
+
     // ListView(
     //   children: [
     //     MainHome(),
@@ -132,16 +138,18 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
           ZoomTapAnimation(
-            onTap: () {
-            },
+            onTap: () {},
             child: const ListTile(
               leading: Icon(
                 CupertinoIcons.home,
               ),
-              title: Text('Trang Chủ', style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-              ),),
+              title: Text(
+                'Trang Chủ',
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
             ),
           ),
           ZoomTapAnimation(
@@ -152,10 +160,13 @@ class _HomePageState extends State<HomePage> {
               leading: Icon(
                 CupertinoIcons.cart,
               ),
-              title: Text('Món đã đặt', style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-              ),),
+              title: Text(
+                'Món đã đặt',
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
             ),
           ),
           ZoomTapAnimation(
@@ -166,10 +177,13 @@ class _HomePageState extends State<HomePage> {
               leading: Icon(
                 CupertinoIcons.arrow_left,
               ),
-              title: Text('Đăng xuất', style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-              ),),
+              title: Text(
+                'Đăng xuất',
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
             ),
           ),
         ],
