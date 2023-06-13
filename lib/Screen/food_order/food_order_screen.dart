@@ -1,8 +1,10 @@
 import 'package:appdatn/Screen/food_detail/food_detail_screen.dart';
+import 'package:appdatn/Screen/food_table/food_table_screen.dart';
 import 'package:appdatn/entity/category_type.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:focus_detector/focus_detector.dart';
 import 'package:get/get.dart';
 import 'package:image_network/image_network.dart';
 import 'food_order_controller.dart';
@@ -12,33 +14,39 @@ class FoodOrderScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      // appBar: AppBar(
-      //   title: Text(
-      //     "Danh Sách",
-      //     style: TextStyle(
-      //       color: Colors.black,
-      //     ),
-      //   ),
-      //   backgroundColor: Colors.white,
-      // ),
-      body: Container(
-        color: Colors.white,
-        child: Column(
-          children: [
-            SizedBox(
-              height: 34,
-            ),
-            _buildSearchBar(),
-            Obx(
-              () => _buildCategory(),
-            ),
-            Expanded(
-              child: Obx(
-                () => _buildBody(),
+    return FocusDetector(
+      onFocusGained: () {
+        Get.bottomSheet(FoodTableScreen());
+      },
+      child: Scaffold(
+        // appBar: AppBar(
+        //   title: Text(
+        //     "Danh Sách",
+        //     style: TextStyle(
+        //       color: Colors.black,
+        //     ),
+        //   ),
+        //   backgroundColor: Colors.white,
+        // ),
+
+        body: Container(
+          color: Colors.white,
+          child: Column(
+            children: [
+              SizedBox(
+                height: 34,
               ),
-            ),
-          ],
+              _buildSearchBar(),
+              Obx(
+                () => _buildCategory(),
+              ),
+              Expanded(
+                child: Obx(
+                  () => _buildBody(),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
@@ -167,6 +175,8 @@ class FoodOrderScreen extends StatelessWidget {
                         () => FoodDetailScreen(),
                         arguments: food,
                       );
+
+                      //Get.bottomSheet(FoodTableScreen());
                     },
                     child: Container(
                       child: _buildItemAtIndex(index),
