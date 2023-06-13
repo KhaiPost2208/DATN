@@ -1,7 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'CreateAccount.dart';
-import '../../HomePage/ScreenLogin.dart';
 import 'package:get/get.dart';
 
 

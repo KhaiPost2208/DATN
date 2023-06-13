@@ -1,23 +1,19 @@
-import 'package:appdatn/Screen/CategoryWidget.dart';
-import 'package:appdatn/Screen/DrawerScreen.dart';
-import 'package:appdatn/Screen/MenuBanhMi.dart';
-import 'package:appdatn/Screen/Tabbar.dart';
+import 'package:appdatn/Screen/HomePage/CategoryWidget.dart';
+import 'package:appdatn/Screen/MenuFood/MenuBanhMi.dart';
+import 'package:appdatn/Screen/TabbarView/Tabbar.dart';
 import 'package:buttons_tabbar/buttons_tabbar.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:zoom_tap_animation/zoom_tap_animation.dart';
-import '../HomePage/CartPage.dart';
-import '../HomePage/ScreenLogin.dart';
-import 'AppBarWidget.dart';
-import 'Drink.dart';
-import 'Information.dart';
-import 'Menu.dart';
-import 'MenuBanhMine.dart';
-import 'MenuPho.dart';
-import 'TabbarNavigation.dart';
+import '../../HomePage/CartPage.dart';
+import '../InformationFood/Information.dart';
+import '../MenuFood/MenuBanhMine.dart';
+import '../MenuFood/MenuPho.dart';
+import '../TabbarView/TabbarBanhMi.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -30,7 +26,6 @@ class _HomePageState extends State<HomePage> {
   final tabs = [
     ListView(
       children: [
-        AppBarWidget(),
         Padding(
           padding: EdgeInsets.symmetric(horizontal: 15, vertical: 4),
           child: Container(
@@ -95,18 +90,19 @@ class _HomePageState extends State<HomePage> {
         Image.asset('assets/thaytam.png', height: 320,),
       ],
     ),
-    ListView(
-      children: [
-        Padding(
-          padding: const EdgeInsets.only(top: 20, left: 10),
-          child: Text(
-            'Món ăn',
-            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-          ),
-        ),
-        CategoryWidget(),
-      ],
-    ),
+    HomeTopTabs(),
+    // ListView(
+    //   children: [
+    //     MainHome(),
+    //     // Padding(
+    //     //   padding: const EdgeInsets.only(top: 20, left: 10),
+    //     //   child: Text(
+    //     //     'Món ăn',
+    //     //     style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+    //     //   ),
+    //     // ),
+    //   ],
+    // ),
     Container(
       child: Center(
         child: Text('Hoạt Động'),
@@ -117,6 +113,66 @@ class _HomePageState extends State<HomePage> {
         'assets/bidv.jpg',
         width: 700,
         height: 700,
+      ),
+    ),
+    Center(
+      child: ListView(
+        children: [
+          const DrawerHeader(
+            padding: EdgeInsets.zero,
+            child: UserAccountsDrawerHeader(
+              decoration: BoxDecoration(
+                color: Colors.black45,
+              ),
+              accountName: Text("Nhà Hàng"),
+              accountEmail: Text("Nguyendangkhai.telecom@gmail.com"),
+              currentAccountPicture: CircleAvatar(
+                backgroundImage: AssetImage('assets/soban.jpg'),
+              ),
+            ),
+          ),
+          ZoomTapAnimation(
+            onTap: () {
+            },
+            child: const ListTile(
+              leading: Icon(
+                CupertinoIcons.home,
+              ),
+              title: Text('Trang Chủ', style: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+              ),),
+            ),
+          ),
+          ZoomTapAnimation(
+            onTap: () {
+              Get.to(CartPage());
+            },
+            child: ListTile(
+              leading: Icon(
+                CupertinoIcons.cart,
+              ),
+              title: Text('Món đã đặt', style: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+              ),),
+            ),
+          ),
+          ZoomTapAnimation(
+            onTap: () {
+              FirebaseAuth.instance.signOut();
+            },
+            child: const ListTile(
+              leading: Icon(
+                CupertinoIcons.arrow_left,
+              ),
+              title: Text('Đăng xuất', style: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+              ),),
+            ),
+          ),
+        ],
       ),
     ),
   ];
@@ -145,6 +201,10 @@ class _HomePageState extends State<HomePage> {
             icon: Icon(Icons.payment),
             label: 'Thanh Toán',
           ),
+          BottomNavigationBarItem(
+            icon: Icon(CupertinoIcons.bars),
+            label: 'Khác',
+          ),
         ],
         currentIndex: _selectedIndex,
         //New
@@ -155,7 +215,6 @@ class _HomePageState extends State<HomePage> {
         },
       ),
       body: tabs[_selectedIndex],
-      drawer: DrawerWidget(),
     );
   }
 }

@@ -1,7 +1,10 @@
+import 'package:appdatn/Screen/food_order/food_order_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import 'TabbarBanhCanh.dart';
 import 'TabbarBanhMi.dart';
+import 'TabbarPho.dart';
 
 
 HomeTopTabs() {
@@ -74,13 +77,9 @@ HomeTopTabs() {
         padding: const EdgeInsets.all(8.0),
         child: TabBarView(
           children: <Widget>[
-            TabbarBanhMi(),
-            Container(
-              color: Colors.red,
-            ),
-            Container(
-              color: Colors.yellow,
-            ),
+            FoodOrderScreen(),
+            TabbarPho(),
+            TabbarBanhCanh(),
             Container(
               color: Colors.green,
             ),

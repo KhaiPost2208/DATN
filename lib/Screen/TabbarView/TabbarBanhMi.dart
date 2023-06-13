@@ -1,6 +1,6 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
-
+import 'package:zoom_tap_animation/zoom_tap_animation.dart';
 
 class TabbarBanhMi extends StatefulWidget {
   const TabbarBanhMi({super.key});
@@ -17,95 +17,84 @@ class _TabbarBanhMiState extends State<TabbarBanhMi> {
         padding: EdgeInsets.symmetric(horizontal: 10),
         child: Column(
           children: [
-            Padding(
-              padding: const EdgeInsets.only(top: 10),
-              child: Text('Bánh Mì', style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),),
+            Text(
+              'Bánh Mì',
+              style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
             ),
             SizedBox(height: 10),
-            Row(
-              children: [
-                Container(
-                  child: Image.asset(
-                    'assets/banhmi.png',
-                    height: 60,
-                  ),
-                ),
-                SizedBox(width: 30),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text('Bánh Mì Đặc Biệt', style: TextStyle(fontSize: 18),),
-                    SizedBox(width: 20),
-                    Text('Giá: 30.000')
-                  ],
-                ),
-              ],
-            ),
+            ZoomTapAnimation(
+                onTap: () {
+                  showModalBottomSheet(
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.only(
+                              topRight: Radius.circular(20),
+                              topLeft: Radius.circular(20))),
+                      context: context,
+                      isScrollControlled: true,
+                      builder: (context) {
+                        return FractionallySizedBox(
+                          heightFactor: 0.9,
+                          child: Container(
+                            child: Column(
+                              children: [
+                                Expanded(
+                                  child: Image.asset(
+                                    'assets/banhmi.png',
+                                  ),
+                                ),
+                                Expanded(
+                                    child: Container(
+                                  decoration: BoxDecoration(
+                                    color: Colors.black12,
+                                    borderRadius: BorderRadius.only(
+                                        topRight: Radius.circular(20),
+                                        topLeft: Radius.circular(20)),
+                                  ),
+                                )),
+                              ],
+                            ),
+                          ),
+                        );
+                      });
+                },
+                child: menuBanhMi('Bánh Mì Đặt Biệt', Colors.black87, 30000)),
             SizedBox(height: 20),
-            Row(
-              children: [
-                Container(
-                  child: Image.asset(
-                    'assets/banhmi.png',
-                    height: 60,
-                  ),
-                ),
-                SizedBox(width: 30),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text('Bánh Mì Xíu Mại', style: TextStyle(fontSize: 18),),
-                    SizedBox(width: 20),
-                    Text('Giá: 20.000')
-                  ],
-                ),
-              ],
-            ),
+            menuBanhMi('Bánh Mì Xíu Mại', Colors.black87, 30000),
             SizedBox(height: 20),
-            Row(
-              children: [
-                Container(
-                  child: Image.asset(
-                    'assets/banhmi.png',
-                    height: 60,
-                  ),
-                ),
-                SizedBox(width: 30),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text('Bánh Mì Gà', style: TextStyle(fontSize: 18),),
-                    SizedBox(width: 20),
-                    Text('Giá: 30.000')
-                  ],
-                ),
-              ],
-            ),
+            menuBanhMi('Bánh Mì Gà', Colors.black87, 30000),
             SizedBox(height: 20),
-            Row(
-              children: [
-                Container(
-                  child: Image.asset(
-                    'assets/banhmi.png',
-                    height: 60,
-                  ),
-                ),
-                SizedBox(width: 30),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text('Bánh Mì Thịt Nguội', style: TextStyle(fontSize: 18),),
-                    SizedBox(width: 20),
-                    Text('Giá: 30.000')
-                  ],
-                ),
-              ],
-            ),
-
+            menuBanhMi('Bánh Mì Thịt Nguội', Colors.black87, 30000),
+            SizedBox(height: 20),
           ],
         ),
       ),
-
     );
   }
+}
+
+Widget menuBanhMi(String Click, Color txtcolor, int Price) {
+  return Container(
+    child: Row(
+      children: [
+        Container(
+          child: Image.asset(
+            'assets/banhmi.png',
+            height: 60,
+          ),
+        ),
+        SizedBox(width: 30),
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              '$Click',
+              style: TextStyle(fontSize: 18),
+            ),
+            SizedBox(width: 20),
+            Text('Giá: $Price')
+          ],
+        ),
+      ],
+    ),
+  );
 }

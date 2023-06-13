@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../Screen/AppBarWidget.dart';
 
 class CartPage extends StatelessWidget {
   const CartPage({Key? key}) : super(key: key);
@@ -15,7 +14,6 @@ class CartPage extends StatelessWidget {
               padding: EdgeInsets.symmetric(horizontal: 10),
               child: Column(
                 children: [
-                  appBarCart(),
                   Padding(
                     padding: EdgeInsets.only(top: 20, left: 10, bottom: 10),
                     child: Text(

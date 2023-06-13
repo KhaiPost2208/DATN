@@ -13,7 +13,7 @@ class FoodOrderController extends GetxController {
   }
 
   Future<void> getDataCoffee() async {
-    listFood.value = await getDataFood('coffee');
+    listFood.value = await getDataFood('banh_mi');
     listFood.refresh();
   }
 

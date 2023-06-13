@@ -2,8 +2,6 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_network/image_network.dart';
-
-import '../food_detail/food_detail_screen.dart';
 import 'food_order_controller.dart';
 
 class FoodOrderScreen extends StatelessWidget {
@@ -89,12 +87,7 @@ class FoodOrderScreen extends StatelessWidget {
                 return Card(
                   child: InkWell(
                     onTap: () {
-                      var food = controller.listFood.value[index];
 
-                      Get.to(
-                        () => FoodDetailScreen(),
-                        arguments: food,
-                      );
                     },
                     child: Container(
                       child: _buildItemAtIndex(index),

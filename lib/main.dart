@@ -3,11 +3,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:get/get.dart';
-
-import 'HomePage/MyHomePage.dart';
-import 'HomePage/ScreenLogin.dart';
-import 'Screen/AppBarWidget.dart';
-import 'Screen/MyHome.dart';
+import 'Screen/LoginScreen/MyHomePage.dart';
+import 'Screen/HomePage/MyHome.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
