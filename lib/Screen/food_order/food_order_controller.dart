@@ -15,7 +15,7 @@ class FoodOrderController extends GetxController {
     super.onInit();
 
     listCategory.value = [
-      CategoryType.BANH_MI,
+      //CategoryType.BANH_MI,
       CategoryType.PHO,
       CategoryType.BANH_CANH,
       CategoryType.BANH_XEO,
@@ -27,44 +27,6 @@ class FoodOrderController extends GetxController {
     listCategory.refresh();
 
     getDataFromCategory();
-
-    //getDataCoffee();
-  }
-
-  Future<void> getDataCoffee() async {
-    listFood.value = await getDataFood('banh_mi');
-    listFood.refresh();
-  }
-
-  Future<void> getDataCloudFee() async {
-    listFood.value = await getDataFood('pho');
-    listFood.refresh();
-  }
-
-  Future<List<Food>> getDataFood(String collectionId) async {
-    var list = <Food>[];
-    await FirebaseFirestore.instance
-        .collection(collectionId)
-        .get()
-        .then((QuerySnapshot querySnapshot) {
-      querySnapshot.docs.forEach((doc) {
-        var name = doc["name"];
-        var price = doc["price"];
-        var priceFormat = doc["price_formart"];
-        //var desc = doc["desc"];
-        var thumb = doc["thumb"];
-        var food = Food(
-          name: name,
-          //desc: desc,
-          thumb: thumb,
-          price: price,
-          priceFormat: priceFormat,
-        );
-        list.add(food);
-      });
-    });
-
-    return list;
   }
 
   String getTitleCategory(CategoryType categoryType) {
@@ -143,5 +105,31 @@ class FoodOrderController extends GetxController {
     var collectionId = getIdCategory(listCategory.value[indexSelect.value]);
     listFood.value = await getDataFood(collectionId);
     listFood.refresh();
+  }
+
+  Future<List<Food>> getDataFood(String collectionId) async {
+    var list = <Food>[];
+    await FirebaseFirestore.instance
+        .collection(collectionId)
+        .get()
+        .then((QuerySnapshot querySnapshot) {
+      querySnapshot.docs.forEach((doc) {
+        var name = doc["name"];
+        var price = doc["price"];
+        var priceFormat = doc["price_formart"];
+        //var desc = doc["desc"];
+        var thumb = doc["thumb"];
+        var food = Food(
+          name: name,
+          //desc: desc,
+          thumb: thumb,
+          price: price,
+          priceFormat: priceFormat,
+        );
+        list.add(food);
+      });
+    });
+
+    return list;
   }
 }

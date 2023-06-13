@@ -1,3 +1,4 @@
+import 'package:appdatn/Screen/food_detail/food_detail_screen.dart';
 import 'package:appdatn/entity/category_type.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
@@ -160,7 +161,13 @@ class FoodOrderScreen extends StatelessWidget {
               itemBuilder: (context, index) {
                 return Card(
                   child: InkWell(
-                    onTap: () {},
+                    onTap: () {
+                      var food = controller.listFood.value[index];
+                      Get.to(
+                        () => FoodDetailScreen(),
+                        arguments: food,
+                      );
+                    },
                     child: Container(
                       child: _buildItemAtIndex(index),
                     ),
@@ -232,24 +239,6 @@ class FoodOrderScreen extends StatelessWidget {
           ),
         ],
       ),
-    );
-  }
-
-  Widget _buildItemCategory(String imageName, String title) {
-    return Column(
-      children: [
-        Image.asset(
-          imageName,
-          height: 60,
-        ),
-        Text(
-          title,
-          style: TextStyle(
-            fontWeight: FontWeight.normal,
-            color: Colors.black,
-          ),
-        ),
-      ],
     );
   }
 }
