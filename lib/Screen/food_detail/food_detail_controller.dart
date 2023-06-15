@@ -49,6 +49,7 @@ class FoodDetailController extends GetxController {
         .doc(docId)
         .set(
           {
+            'thub': food.value?.thumb,
             'name': food.value?.name ?? '',
             'quantity': quantity.value,
             'price': price.value,

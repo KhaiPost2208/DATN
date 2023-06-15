@@ -46,6 +46,7 @@ class FoodOrderScreen extends StatelessWidget {
                   () => _buildBody(),
                 ),
               ),
+              _addCart(),
             ],
           ),
         ),
@@ -181,7 +182,7 @@ class FoodOrderScreen extends StatelessWidget {
                         () => FoodDetailScreen(),
                         arguments: food,
                       );
-                      // Get.bottomSheet(FoodTableScreen());
+                      // Get.bottomSheet(BottonSeet());
                     },
                     child: Container(
                       child: _buildItemAtIndex(index),
@@ -192,6 +193,7 @@ class FoodOrderScreen extends StatelessWidget {
             ),
           ),
         ),
+
       ],
     );
   }
@@ -254,6 +256,26 @@ class FoodOrderScreen extends StatelessWidget {
                 ),
               ),
             ),
+          ],
+        ),
+      ),
+    );
+  }
+  Widget _addCart() {
+    return Container(
+      color: Colors.red[900],
+      height: 60,
+      child: Padding(
+        padding: const EdgeInsets.all(14.0),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(
+              'Món đã chọn',
+              style: TextStyle(
+                  fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white),
+            ),
+            Icon(CupertinoIcons.cart_fill, color: Colors.white, size: 44,),
           ],
         ),
       ),

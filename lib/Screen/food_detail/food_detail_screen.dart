@@ -63,17 +63,23 @@ class FoodDetailScreen extends StatelessWidget {
                       Text(
                         controller.food.value?.name ?? "Detail",
                         style: TextStyle(
-                            fontSize: 20, fontWeight: FontWeight.bold, color: Colors.brown),
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.brown),
                       ),
                       Text(
                         controller.food.value?.priceFormat ?? "Detail",
                         style: TextStyle(
-                            fontSize: 20, fontWeight: FontWeight.bold, color: Colors.brown),
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.brown),
                       ),
                       // Text(controller.food.value?.desc ?? "Khai"),
                     ],
                   ),
-                  SizedBox(height: 10,),
+                  SizedBox(
+                    height: 10,
+                  ),
                   Text(controller.food.value?.desc ?? "Khai"),
                 ],
               ),
@@ -82,12 +88,15 @@ class FoodDetailScreen extends StatelessWidget {
           Container(
             alignment: Alignment.bottomCenter,
             child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                // Expanded(
-                //   child: _buildQuantity(),
-                // ),
                 _buildQuantity(),
-                _buildPrice(),
+                InkWell(
+                  onTap: () {
+                    controller.addFoodToFirebase();
+                  },
+                  child: _buildPrice(),
+                ),
               ],
             ),
           ),
@@ -166,46 +175,46 @@ class FoodDetailScreen extends StatelessWidget {
     return Container(
       height: 50,
       width: 150,
+      // width: double.infinity,
       //color: Colors.red,
       alignment: Alignment.center,
       margin: EdgeInsets.only(left: 20, right: 20),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(25),
-        color: Colors.red,
+        color: Colors.red[900],
       ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(
-              'THÊM',
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 16,
-              ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text(
+            'THÊM',
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 16,
             ),
-            SizedBox(
-              width: 8,
+          ),
+          SizedBox(
+            width: 8,
+          ),
+          Text(
+            controller.price.toString(),
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 16,
             ),
-            Text(
-              controller.price.toString(),
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 16,
-              ),
+          ),
+          SizedBox(
+            width: 8,
+          ),
+          Text(
+            'VNĐ',
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 16,
             ),
-            SizedBox(
-              width: 8,
-            ),
-            Text(
-              'VNĐ',
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 16,
-              ),
-            )
-          ],
-        ),
-      );
-
+          )
+        ],
+      ),
+    );
   }
 }

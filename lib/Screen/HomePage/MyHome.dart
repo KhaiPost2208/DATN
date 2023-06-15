@@ -49,21 +49,7 @@ class _HomePageState extends State<HomePage> {
         ),
       ],
     ),
-    //HomeTopTabs(),
     FoodOrderScreen(),
-
-    // ListView(
-    //   children: [
-    //     MainHome(),
-    //     // Padding(
-    //     //   padding: const EdgeInsets.only(top: 20, left: 10),
-    //     //   child: Text(
-    //     //     'Món ăn',
-    //     //     style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-    //     //   ),
-    //     // ),
-    //   ],
-    // ),
     Container(
       child: Center(
         child: Text('Hoạt Động'),
@@ -147,7 +133,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       bottomNavigationBar: BottomNavigationBar(
-        fixedColor: Colors.teal,
+        fixedColor: Colors.red[900],
         type: BottomNavigationBarType.fixed,
         iconSize: 30,
         items: <BottomNavigationBarItem>[
