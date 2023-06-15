@@ -10,7 +10,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:zoom_tap_animation/zoom_tap_animation.dart';
-import '../../HomePage/CartPage.dart';
 import '../InformationFood/Information.dart';
 import '../MenuFood/MenuBanhMine.dart';
 import '../MenuFood/MenuPho.dart';
@@ -109,9 +108,6 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
           ZoomTapAnimation(
-            onTap: () {
-              Get.to(CartPage());
-            },
             child: ListTile(
               leading: Icon(
                 CupertinoIcons.cart,

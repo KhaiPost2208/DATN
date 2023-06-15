@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_network/image_network.dart';
+import 'package:zoom_tap_animation/zoom_tap_animation.dart';
 
 import 'food_detail_controller.dart';
 
@@ -12,7 +13,7 @@ class FoodDetailScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Detail"),
+        title: Text("Gọi Món"),
       ),
       body: Container(
         color: Colors.white,
@@ -24,38 +25,74 @@ class FoodDetailScreen extends StatelessWidget {
   }
 
   Widget _buildBody() {
-    return Stack(
-      children: [
-        Column(
-          children: [
-            ImageNetwork(
-              image: controller.food.value?.thumb ?? "",
-              imageCache: CachedNetworkImageProvider(
-                  controller.food.value?.thumb ?? ""),
-              height: 200,
-              width: double.infinity,
-              fitAndroidIos: BoxFit.contain,
-              onLoading: const CircularProgressIndicator(
-                color: Colors.indigoAccent,
+    return Container(
+      child: Column(
+        children: [
+          Expanded(
+            child: Container(
+              decoration: BoxDecoration(),
+              child: ImageNetwork(
+                image: controller.food.value?.thumb ?? "",
+                imageCache: CachedNetworkImageProvider(
+                    controller.food.value?.thumb ?? ""),
+                height: 200,
+                width: double.infinity,
+                fitAndroidIos: BoxFit.contain,
+                onLoading: const CircularProgressIndicator(
+                  color: Colors.indigoAccent,
+                ),
               ),
             ),
-            Text(controller.food.value?.name ?? "Detail"),
-            Text(controller.food.value?.priceFormat ?? "Detail"),
-            Text(controller.food.value?.desc ?? "Detail"),
-          ],
-        ),
-        Container(
-          alignment: Alignment.bottomCenter,
-          child: Row(
-            children: [
-              Expanded(
-                child: _buildQuantity(),
-              ),
-              _buildPrice(),
-            ],
           ),
-        ),
-      ],
+          Expanded(
+              child: Container(
+            width: double.infinity,
+            decoration: BoxDecoration(
+                color: Colors.grey[300],
+                borderRadius: BorderRadius.only(
+                  topRight: Radius.circular(30),
+                  topLeft: Radius.circular(30),
+                )),
+            child: Padding(
+              padding: const EdgeInsets.all(12.0),
+              child: Column(
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        controller.food.value?.name ?? "Detail",
+                        style: TextStyle(
+                            fontSize: 20, fontWeight: FontWeight.bold, color: Colors.brown),
+                      ),
+                      Text(
+                        controller.food.value?.priceFormat ?? "Detail",
+                        style: TextStyle(
+                            fontSize: 20, fontWeight: FontWeight.bold, color: Colors.brown),
+                      ),
+                      // Text(controller.food.value?.desc ?? "Khai"),
+                    ],
+                  ),
+                  SizedBox(height: 10,),
+                  Text(controller.food.value?.desc ?? "Khai"),
+                ],
+              ),
+            ),
+          )),
+          Container(
+            alignment: Alignment.bottomCenter,
+            child: Row(
+              children: [
+                // Expanded(
+                //   child: _buildQuantity(),
+                // ),
+                _buildQuantity(),
+                _buildPrice(),
+              ],
+            ),
+          ),
+        ],
+      ),
     );
   }
 
@@ -136,38 +173,39 @@ class FoodDetailScreen extends StatelessWidget {
         borderRadius: BorderRadius.circular(25),
         color: Colors.red,
       ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Text(
-            'THÊM',
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 16,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              'THÊM',
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 16,
+              ),
             ),
-          ),
-          SizedBox(
-            width: 8,
-          ),
-          Text(
-            controller.price.toString(),
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 16,
+            SizedBox(
+              width: 8,
             ),
-          ),
-          SizedBox(
-            width: 8,
-          ),
-          Text(
-            'vnđ',
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 16,
+            Text(
+              controller.price.toString(),
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 16,
+              ),
             ),
-          )
-        ],
-      ),
-    );
+            SizedBox(
+              width: 8,
+            ),
+            Text(
+              'VNĐ',
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 16,
+              ),
+            )
+          ],
+        ),
+      );
+
   }
 }

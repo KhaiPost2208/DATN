@@ -160,6 +160,12 @@ class FoodOrderScreen extends StatelessWidget {
   Widget _buildBody() {
     return Stack(
       children: [
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Text( 'Món ăn',
+            style: TextStyle(
+                fontSize: 24, fontWeight: FontWeight.bold, color: Colors.black),),
+        ),
         Center(
           child: Container(
             alignment: AlignmentDirectional.center,
@@ -175,8 +181,7 @@ class FoodOrderScreen extends StatelessWidget {
                         () => FoodDetailScreen(),
                         arguments: food,
                       );
-
-                      //Get.bottomSheet(FoodTableScreen());
+                      // Get.bottomSheet(FoodTableScreen());
                     },
                     child: Container(
                       child: _buildItemAtIndex(index),

@@ -117,11 +117,11 @@ class FoodOrderController extends GetxController {
         var name = doc["name"];
         var price = doc["price"];
         var priceFormat = doc["price_formart"];
-        // var desc = doc["desc"];
+        var desc = doc["desc"];
         var thumb = doc["thumb"];
         var food = Food(
           name: name,
-          // desc: desc,
+          desc: desc,
           thumb: thumb,
           price: price,
           priceFormat: priceFormat,
