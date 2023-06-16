@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:focus_detector/focus_detector.dart';
 import 'package:get/get.dart';
 import 'package:image_network/image_network.dart';
+import 'package:zoom_tap_animation/zoom_tap_animation.dart';
 import 'food_order_controller.dart';
 
 
@@ -20,16 +21,6 @@ class FoodOrderScreen extends StatelessWidget {
         // Get.bottomSheet(FoodTableScreen()); // Tắt chế độ BottonSheet
       },
       child: Scaffold(
-        // appBar: AppBar(
-        //   title: Text(
-        //     "Danh Sách",
-        //     style: TextStyle(
-        //       color: Colors.black,
-        //     ),
-        //   ),
-        //   backgroundColor: Colors.white,
-        // ),
-
         body: Container(
           color: Colors.white,
           child: Column(
@@ -275,7 +266,11 @@ class FoodOrderScreen extends StatelessWidget {
               style: TextStyle(
                   fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white),
             ),
-            Icon(CupertinoIcons.cart_fill, color: Colors.white, size: 44,),
+            ZoomTapAnimation(
+              onTap: ()  {
+
+              },
+                child: Icon(CupertinoIcons.cart_fill, color: Colors.white, size: 44,)),
           ],
         ),
       ),

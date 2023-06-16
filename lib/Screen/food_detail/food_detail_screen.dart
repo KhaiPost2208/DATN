@@ -14,6 +14,12 @@ class FoodDetailScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text("Gọi Món"),
+        actions: [
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Icon(Icons.shopping_cart_rounded, size: 34,),
+          )
+        ],
       ),
       body: Container(
         color: Colors.white,

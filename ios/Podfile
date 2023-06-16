@@ -32,9 +32,12 @@ target 'Runner' do
   use_modular_headers!
 
   flutter_install_all_ios_pods File.dirname(File.realpath(__FILE__))
+<<<<<<< HEAD
   target 'RunnerTests' do
     inherit! :search_paths
   end
+=======
+>>>>>>> 2829f95e5830c4c2c1371c82c5a5389be62e2c59
 end
 
 post_install do |installer|
