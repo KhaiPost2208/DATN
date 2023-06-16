@@ -5,9 +5,14 @@
     "version": "0.2.0",
     "configurations": [
 <<<<<<< HEAD
+<<<<<<< HEAD
         
         {
             "name": "DATN_NEW",
+=======
+        {
+            "name": "DATN",
+>>>>>>> 2829f95e5830c4c2c1371c82c5a5389be62e2c59
 =======
         {
             "name": "DATN",
@@ -17,7 +22,11 @@
         },
         {
 <<<<<<< HEAD
+<<<<<<< HEAD
             "name": "DATN_NEW (profile mode)",
+=======
+            "name": "DATN (profile mode)",
+>>>>>>> 2829f95e5830c4c2c1371c82c5a5389be62e2c59
 =======
             "name": "DATN (profile mode)",
 >>>>>>> 2829f95e5830c4c2c1371c82c5a5389be62e2c59
@@ -27,7 +36,11 @@
         },
         {
 <<<<<<< HEAD
+<<<<<<< HEAD
             "name": "DATN_NEW (release mode)",
+=======
+            "name": "DATN (release mode)",
+>>>>>>> 2829f95e5830c4c2c1371c82c5a5389be62e2c59
 =======
             "name": "DATN (release mode)",
 >>>>>>> 2829f95e5830c4c2c1371c82c5a5389be62e2c59
