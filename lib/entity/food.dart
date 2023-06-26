@@ -5,6 +5,7 @@ class Food {
   String? thumb;
   String? desc;
   String? note;
+  int? quantity;
 
   Food({
     this.name,
@@ -13,6 +14,7 @@ class Food {
     this.priceFormat = "",
     this.thumb = "",
     this.note = "",
+    this.quantity,
   });
 
   Food.fromJson(Map<String, dynamic> json) {
@@ -22,5 +24,6 @@ class Food {
     priceFormat = json['priceFormat'];
     thumb = json['thumb'];
     note = json['note'];
+    quantity =json['quantity'];
   }
 }

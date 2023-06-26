@@ -8,6 +8,7 @@ import 'package:focus_detector/focus_detector.dart';
 import 'package:get/get.dart';
 import 'package:image_network/image_network.dart';
 import 'package:zoom_tap_animation/zoom_tap_animation.dart';
+import '../food_cart/food_cart_screen.dart';
 import 'food_order_controller.dart';
 
 
@@ -268,7 +269,10 @@ class FoodOrderScreen extends StatelessWidget {
             ),
             ZoomTapAnimation(
               onTap: ()  {
+                Get.to(
+                            () => CartFood(),
 
+                      );
               },
                 child: Icon(CupertinoIcons.cart_fill, color: Colors.white, size: 44,)),
           ],

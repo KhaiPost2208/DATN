@@ -120,6 +120,7 @@ class FoodOrderController extends GetxController {
         var desc = doc["desc"];
         var thumb = doc["thumb"];
         var food = Food(
+
           name: name,
           desc: desc,
           thumb: thumb,

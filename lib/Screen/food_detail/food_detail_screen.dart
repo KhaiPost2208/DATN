@@ -1,9 +1,11 @@
+
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_network/image_network.dart';
 import 'package:zoom_tap_animation/zoom_tap_animation.dart';
 
+import '../food_cart/food_cart_screen.dart';
 import 'food_detail_controller.dart';
 
 class FoodDetailScreen extends StatelessWidget {
@@ -15,9 +17,16 @@ class FoodDetailScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text("Gọi Món"),
         actions: [
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Icon(Icons.shopping_cart_rounded, size: 34,),
+          ZoomTapAnimation(
+            onTap: ()  {
+              Get.to(
+                    () => CartFood(),
+              );
+            },
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Icon(Icons.shopping_cart_rounded, size: 34,),
+            ),
           )
         ],
       ),
@@ -180,7 +189,7 @@ class FoodDetailScreen extends StatelessWidget {
   Widget _buildPrice() {
     return Container(
       height: 50,
-      width: 150,
+      width: 160,
       // width: double.infinity,
       //color: Colors.red,
       alignment: Alignment.center,
@@ -196,7 +205,7 @@ class FoodDetailScreen extends StatelessWidget {
             'THÊM',
             style: TextStyle(
               color: Colors.white,
-              fontSize: 16,
+              fontSize: 14,
             ),
           ),
           SizedBox(
@@ -206,7 +215,7 @@ class FoodDetailScreen extends StatelessWidget {
             controller.price.toString(),
             style: TextStyle(
               color: Colors.white,
-              fontSize: 16,
+              fontSize: 14,
             ),
           ),
           SizedBox(
@@ -216,7 +225,7 @@ class FoodDetailScreen extends StatelessWidget {
             'VNĐ',
             style: TextStyle(
               color: Colors.white,
-              fontSize: 16,
+              fontSize: 14,
             ),
           )
         ],
@@ -224,3 +233,4 @@ class FoodDetailScreen extends StatelessWidget {
     );
   }
 }
+

@@ -10,4 +10,5 @@ enum CategoryType {
   BUN_RIEU,
   MI_QUANG,
   NUOC_UONG,
+  FOOD_ORDER,
 }
