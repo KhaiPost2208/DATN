@@ -10,6 +10,9 @@ class FoodOrderController extends GetxController {
 
   var indexSelect = 0.obs;
 
+  var listFoodCart = Rx<List<Food>>([]);
+  var quantityCart = 0.obs;
+
   @override
   Future<void> onInit() async {
     super.onInit();
@@ -120,7 +123,6 @@ class FoodOrderController extends GetxController {
         var desc = doc["desc"];
         var thumb = doc["thumb"];
         var food = Food(
-
           name: name,
           desc: desc,
           thumb: thumb,
@@ -132,5 +134,24 @@ class FoodOrderController extends GetxController {
     });
 
     return list;
+  }
+
+  /// Food Card
+  void setFoodCard(Food food) {
+    listFoodCart.value.add(food);
+    listFoodCart.refresh();
+
+    var total = 0;
+
+    listFoodCart.value.forEach((element) {
+      total += element.quantity ?? 0;
+    });
+
+    quantityCart.value = total;
+  }
+
+  void cleanFoodCard() {
+    listFoodCart.value = [];
+    quantityCart.value = 0;
   }
 }

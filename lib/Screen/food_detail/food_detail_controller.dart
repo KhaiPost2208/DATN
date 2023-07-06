@@ -58,4 +58,9 @@ class FoodDetailController extends GetxController {
         .then((value) => print("Food Added"))
         .catchError((error) => print("Failed to add food: $error"));
   }
+
+  void addFoodToCart() {
+    food.value?.quantity = quantity.value;
+    Get.back(result: food.value);
+  }
 }

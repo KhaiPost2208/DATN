@@ -1,6 +1,7 @@
 import 'package:appdatn/Screen/food_detail/food_detail_screen.dart';
 import 'package:appdatn/Screen/food_table/food_table_screen.dart';
 import 'package:appdatn/entity/category_type.dart';
+import 'package:appdatn/entity/food.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -10,7 +11,6 @@ import 'package:image_network/image_network.dart';
 import 'package:zoom_tap_animation/zoom_tap_animation.dart';
 import '../food_cart/food_cart_screen.dart';
 import 'food_order_controller.dart';
-
 
 class FoodOrderScreen extends StatelessWidget {
   final controller = Get.put(FoodOrderController());
@@ -38,7 +38,9 @@ class FoodOrderScreen extends StatelessWidget {
                   () => _buildBody(),
                 ),
               ),
-              _addCart(),
+              Obx(
+                () => _addCart(),
+              ),
             ],
           ),
         ),
@@ -75,7 +77,7 @@ class FoodOrderScreen extends StatelessWidget {
               ),
               Container(
                 height: 50,
-                width: 300,
+                width: 250,
                 child: Padding(
                   padding: EdgeInsets.symmetric(horizontal: 15),
                   child: TextFormField(
@@ -95,7 +97,7 @@ class FoodOrderScreen extends StatelessWidget {
 
   Widget _buildCategory() {
     return Container(
-      padding: EdgeInsets.only(top: 10,left: 8, right: 8),
+      padding: EdgeInsets.only(top: 10, left: 8, right: 8),
       height: 120,
       color: Colors.white,
       alignment: Alignment.center,
@@ -155,9 +157,11 @@ class FoodOrderScreen extends StatelessWidget {
       children: [
         Padding(
           padding: const EdgeInsets.all(6),
-          child: Text( 'Món ăn',
+          child: Text(
+            'Món ăn',
             style: TextStyle(
-                fontSize: 22, fontWeight: FontWeight.bold, color: Colors.black),),
+                fontSize: 22, fontWeight: FontWeight.bold, color: Colors.black),
+          ),
         ),
         Center(
           child: Padding(
@@ -170,12 +174,18 @@ class FoodOrderScreen extends StatelessWidget {
                 itemBuilder: (context, index) {
                   return Card(
                     child: InkWell(
-                      onTap: () {
+                      onTap: () async {
                         var food = controller.listFood.value[index];
-                        Get.to(
+                        var result = await Get.to(
                           () => FoodDetailScreen(),
                           arguments: food,
                         );
+
+                        if (result is Food) {
+                          print('food: ${result.name}');
+                          controller.setFoodCard(result);
+                        }
+
                         // Get.bottomSheet(BottonSeet());
                       },
                       child: Container(
@@ -188,7 +198,6 @@ class FoodOrderScreen extends StatelessWidget {
             ),
           ),
         ),
-
       ],
     );
   }
@@ -256,6 +265,7 @@ class FoodOrderScreen extends StatelessWidget {
       ),
     );
   }
+
   Widget _addCart() {
     return Container(
       color: Colors.red[900],
@@ -269,15 +279,53 @@ class FoodOrderScreen extends StatelessWidget {
             Text(
               'Món đã chọn',
               style: TextStyle(
-                  fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white),
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white),
             ),
-            ZoomTapAnimation(
-              onTap: ()  {
-                Get.to(
-                      () => CartFood(),
+
+            InkWell(
+              onTap: () async {
+                var result = await Get.to(
+                  () => FoodCartScreen(),
+                  arguments: controller.listFoodCart.value,
                 );
+
+                if (result == true) {
+                  controller.cleanFoodCard();
+                }
               },
-                child: Icon(CupertinoIcons.cart_fill, color: Colors.white, size: 38,)),
+              child: Stack(
+                alignment: Alignment.center,
+                children: [
+                  Icon(
+                    CupertinoIcons.cart_fill,
+                    color: Colors.white,
+                    size: 40,
+                  ),
+                  Text(
+                    controller.quantityCart.value.toString(),
+                    style: TextStyle(
+                      fontSize: 14,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.red[900],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            // ZoomTapAnimation(
+            //   onTap: () {
+            //     Get.to(
+            //       () => CartFood(),
+            //     );
+            //   },
+            //   child: Icon(
+            //     CupertinoIcons.cart_fill,
+            //     color: Colors.white,
+            //     size: 38,
+            //   ),
+            // ),
           ],
         ),
       ),

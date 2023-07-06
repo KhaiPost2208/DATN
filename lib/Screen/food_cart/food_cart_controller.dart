@@ -1,65 +1,62 @@
-import 'package:appdatn/entity/category_type.dart';
 import 'package:appdatn/entity/food.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class CartFoodOrderController extends GetxController {
-  var listFood = Rx<List<Food>>([]);
+  var listFoodCart = Rx<List<Food>>([]);
 
-  var listCategory = Rx<List<CategoryType>>([]);
-
-  var indexSelect = 0.obs;
+  var heightScreen = Get.height;
+  var isLoading = false.obs;
 
   @override
   Future<void> onInit() async {
     super.onInit();
-    listCategory.value = [
-      CategoryType.FOOD_ORDER,
-    ];
-    listCategory.refresh();
-    getDataFromCategory();
+
+    listFoodCart.value = Get.arguments;
+    listFoodCart.refresh();
   }
 
-  String getIdCategoryCart(CategoryType categoryType) {
-    if (categoryType == CategoryType.FOOD_ORDER) {
-      return 'food_order';
-    }
-    return '';
-  }
+  void addFoodToFirebase() async {
+    CollectionReference foodOrder =
+        await FirebaseFirestore.instance.collection('food_order');
 
-  void setCategorySelect(int index) {
-    indexSelect.value = index;
-    listCategory.refresh();
-    getDataFromCategory();
-  }
+    var count = 0;
+    listFoodCart.value.forEach((food) {
+      isLoading.value = true;
+      var docId = '${food.name}_${DateTime.now().toString()}';
+      foodOrder.doc(docId).set(
+        {
+          'thub': food.thumb,
+          'name': food.name ?? '',
+          'quantity': food.quantity,
+          'price': food.price,
+        },
+      ).then((value) async {
+        count++;
+        if (count >= listFoodCart.value.length) {
+          isLoading.value = false;
 
-  Future<void> getDataFromCategory() async {
-    var collectionId = getIdCategoryCart(listCategory.value[indexSelect.value]);
-    listFood.value = await getDataFood(collectionId);
-    listFood.refresh();
-  }
+          await Get.dialog(
+            AlertDialog(
+              //title: const Text('Dialog'),
+              content: const Text('Đặt hàng thành công'),
+              actions: [
+                TextButton(
+                  child: const Text("OK"),
+                  onPressed: () {
+                    Get.back(result: true);
+                  },
+                ),
+              ],
+            ),
+          );
 
-  Future<List<Food>> getDataFood(String collectionId) async {
-    var list = <Food>[];
-    await FirebaseFirestore.instance
-        .collection(collectionId)
-        .get()
-        .then((QuerySnapshot querySnapshot) {
-      querySnapshot.docs.forEach((doc) {
-        var name = doc["name"];
-        var price = doc["price"];
-        var thumb = doc["thumb"];
-        var quantity = doc["quantity"];
-        var food = Food(
-          name: name,
-          quantity: quantity,
-          thumb: thumb,
-          price: price,
-        );
-        list.add(food);
+          Get.back(result: true);
+        }
+      }).catchError((error) {
+        isLoading.value = false;
       });
     });
-
-    return list;
   }
 }
