@@ -2,9 +2,11 @@ import 'package:appdatn/entity/food.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 
 class CartFoodOrderController extends GetxController {
   var listFoodCart = Rx<List<Food>>([]);
+  var tableName = '';
 
   var heightScreen = Get.height;
   var isLoading = false.obs;
@@ -13,7 +15,8 @@ class CartFoodOrderController extends GetxController {
   Future<void> onInit() async {
     super.onInit();
 
-    listFoodCart.value = Get.arguments;
+    tableName = Get.arguments['TableName'];
+    listFoodCart.value = Get.arguments['ListFood'];
     listFoodCart.refresh();
   }
 
@@ -24,9 +27,13 @@ class CartFoodOrderController extends GetxController {
     var count = 0;
     listFoodCart.value.forEach((food) {
       isLoading.value = true;
+      //var docId = '${food.name}_${DateTime.now().toString()}';
+
+      String dateFormat = DateFormat('dd-MM-yyyy').format(DateTime.now());
       var docId = '${food.name}_${DateTime.now().toString()}';
-      foodOrder.doc(docId).set(
+      foodOrder.doc(tableName).collection(dateFormat).doc(docId).set(
         {
+          'table_name': tableName,
           'thub': food.thumb,
           'name': food.name ?? '',
           'quantity': food.quantity,

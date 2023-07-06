@@ -88,13 +88,13 @@ class FoodCartScreen extends StatelessWidget {
   }
 
   Widget _buildCart() {
-    return InkWell(
-      onTap: () {
-        controller.addFoodToFirebase();
-      },
-      child: Container(
-        alignment: Alignment.bottomCenter,
-        margin: EdgeInsets.only(bottom: 20),
+    return Container(
+      alignment: Alignment.bottomCenter,
+      margin: EdgeInsets.only(bottom: 20),
+      child: InkWell(
+        onTap: () {
+          controller.addFoodToFirebase();
+        },
         child: Container(
           height: 50,
           width: 250,

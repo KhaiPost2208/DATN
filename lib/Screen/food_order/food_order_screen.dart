@@ -286,35 +286,36 @@ class FoodOrderScreen extends StatelessWidget {
 
             InkWell(
               onTap: () async {
-                  var tableName = await showModalBottomSheet(
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.only(
-                              topRight: Radius.circular(20),
-                              topLeft: Radius.circular(20)
-                          )
-                      ),
-                      context: context,
-                      isScrollControlled: true,
-                      builder: (context) {
-                        return FractionallySizedBox(
-                          heightFactor: 0.9,
-                          child: Padding(
-                            padding: const EdgeInsets.all(12),
-                            child: Container(
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  Text("Vui Lòng Chọn Bàn"),
-                                  FoodTableScreen(),
-                                ],
-                              ),
+                var tableName = await showModalBottomSheet(
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.only(
+                            topRight: Radius.circular(20),
+                            topLeft: Radius.circular(20))),
+                    context: context,
+                    isScrollControlled: true,
+                    builder: (context) {
+                      return FractionallySizedBox(
+                        heightFactor: 0.9,
+                        child: Padding(
+                          padding: const EdgeInsets.all(12),
+                          child: Container(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Text("Vui Lòng Chọn Bàn"),
+                                FoodTableScreen(),
+                              ],
                             ),
                           ),
-                        );
-                      });
-                 var result = await Get.to(
+                        ),
+                      );
+                    });
+                var result = await Get.to(
                   () => FoodCartScreen(),
-                  arguments: controller.listFoodCart.value,
+                  arguments: {
+                    'TableName': tableName,
+                    'ListFood': controller.listFoodCart.value,
+                  },
                 );
 
                 if (result == true) {
