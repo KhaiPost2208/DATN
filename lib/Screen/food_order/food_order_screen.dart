@@ -154,34 +154,37 @@ class FoodOrderScreen extends StatelessWidget {
     return Stack(
       children: [
         Padding(
-          padding: const EdgeInsets.all(8.0),
+          padding: const EdgeInsets.all(6),
           child: Text( 'Món ăn',
             style: TextStyle(
-                fontSize: 24, fontWeight: FontWeight.bold, color: Colors.black),),
+                fontSize: 22, fontWeight: FontWeight.bold, color: Colors.black),),
         ),
         Center(
-          child: Container(
-            alignment: AlignmentDirectional.center,
-            child: ListView.builder(
-              scrollDirection: Axis.vertical,
-              itemCount: controller.listFood.value.length,
-              itemBuilder: (context, index) {
-                return Card(
-                  child: InkWell(
-                    onTap: () {
-                      var food = controller.listFood.value[index];
-                      Get.to(
-                        () => FoodDetailScreen(),
-                        arguments: food,
-                      );
-                      // Get.bottomSheet(BottonSeet());
-                    },
-                    child: Container(
-                      child: _buildItemAtIndex(index),
+          child: Padding(
+            padding: EdgeInsets.only(top: 12),
+            child: Container(
+              alignment: AlignmentDirectional.center,
+              child: ListView.builder(
+                scrollDirection: Axis.vertical,
+                itemCount: controller.listFood.value.length,
+                itemBuilder: (context, index) {
+                  return Card(
+                    child: InkWell(
+                      onTap: () {
+                        var food = controller.listFood.value[index];
+                        Get.to(
+                          () => FoodDetailScreen(),
+                          arguments: food,
+                        );
+                        // Get.bottomSheet(BottonSeet());
+                      },
+                      child: Container(
+                        child: _buildItemAtIndex(index),
+                      ),
                     ),
-                  ),
-                );
-              },
+                  );
+                },
+              ),
             ),
           ),
         ),

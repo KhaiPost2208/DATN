@@ -17,33 +17,59 @@ class CartFood extends StatelessWidget {
       ),
       body: Container(
         decoration: BoxDecoration(
-          color: Colors.grey[300],
+          color: Colors.grey[300]
         ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
-              color: Colors.grey[300],
               child: Column(
                 children: [
-                  Text('Danh sách món đã thêm',
-                    style: TextStyle(
-                    fontSize: 16
-                  ),
-                  ),
+                 Padding(
+                   padding: const EdgeInsets.all(20),
+                   child: Container(
+                     width: double.infinity,
+                     height: 500,
+                     decoration: BoxDecoration(
+                       color: Colors.white,
+                     ),
+                     child:  Padding(
+                       padding: const EdgeInsets.all(14),
+                       child: Text('Danh sách món ăn', style: TextStyle(
+                         fontSize: 16, fontWeight: FontWeight.bold,
+                       ),),
+                     ),
+                   ),
+                 ),
+                  Padding(
+                    padding: const EdgeInsets.all(20),
+                    child: Container(
+                      width: double.infinity,
+                      height: 50,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                      ),
+                      child:  Padding(
+                        padding: const EdgeInsets.all(14),
+                        child: Text('Tổng cộng', style: TextStyle(
+                          fontSize: 16, fontWeight: FontWeight.bold,
+                        ),),
+                      ),
+                    ),
+                  )
                 ],
               ),
             ),
-            Container(
-              height: 80,
-              color: Colors.white,
-              alignment: Alignment.bottomCenter,
-              child: Padding(
-                padding: const EdgeInsets.only(bottom: 14),
-                child: _buildCart(),
+            BottomAppBar(
+              child: Align(
+                alignment: Alignment.bottomCenter,
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: _buildCart(),
+                ),
               ),
             )
-
           ],
         ),
 

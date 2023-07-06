@@ -189,7 +189,7 @@ class FoodDetailScreen extends StatelessWidget {
   Widget _buildPrice() {
     return Container(
       height: 50,
-      width: 160,
+      width: 140,
       // width: double.infinity,
       //color: Colors.red,
       alignment: Alignment.center,

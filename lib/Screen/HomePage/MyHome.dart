@@ -29,7 +29,6 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
         CategoryWidget(),
-        // MenuPlus(),
         Padding(
           padding: const EdgeInsets.only(top: 4, left: 10),
           child: Text(

@@ -3,8 +3,12 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:zoom_tap_animation/zoom_tap_animation.dart';
 
+import '../../entity/category_type.dart';
+import '../food_order/food_order_controller.dart';
+
 class CategoryWidget extends StatelessWidget {
-  const CategoryWidget({Key? key}) : super(key: key);
+
+  final controller = Get.put(FoodOrderController());
 
   @override
   Widget build(BuildContext context) {
@@ -20,131 +24,6 @@ class CategoryWidget extends StatelessWidget {
               child: Column(
                 children: [
                   ZoomTapAnimation(
-                    onTap: () {
-                      showModalBottomSheet(
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.only(
-                                  topRight: Radius.circular(20),
-                                  topLeft: Radius.circular(20)
-                              )
-                          ),
-                          context: context,
-                          isScrollControlled: true,
-                          builder: (context) {
-                            return FractionallySizedBox(
-                              heightFactor: 0.9,
-                              child: Padding(
-                                padding: const EdgeInsets.all(12),
-                                child: Container(
-                                  // width: 170,
-                                  // height: 200,
-                                  child: Padding(
-                                    padding: EdgeInsets.symmetric(horizontal: 10),
-                                    child: Column(
-                                      children: [
-                                        Text('Bánh Mì', style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),),
-                                        SizedBox(height: 30),
-                                        Row(
-                                          children: [
-                                            Container(
-                                              child: Image.asset(
-                                                'assets/banhmi.png',
-                                                height: 60,
-                                              ),
-                                            ),
-                                            SizedBox(width: 30),
-                                            Column(
-                                              crossAxisAlignment: CrossAxisAlignment.start,
-                                              children: [
-                                                Text('Bánh Mì Đặc Biệt', style: TextStyle(fontSize: 18),),
-                                                SizedBox(width: 20),
-                                                Text('Giá: 30.000')
-                                              ],
-                                            ),
-                                          ],
-                                        ),
-                                        SizedBox(height: 20),
-                                        Row(
-                                          children: [
-                                            Container(
-                                              child: Image.asset(
-                                                'assets/banhmi.png',
-                                                height: 60,
-                                              ),
-                                            ),
-                                            SizedBox(width: 30),
-                                            Column(
-                                              crossAxisAlignment: CrossAxisAlignment.start,
-                                              children: [
-                                                Text('Bánh Mì Xíu Mại', style: TextStyle(fontSize: 18),),
-                                                SizedBox(width: 20),
-                                                Text('Giá: 20.000')
-                                              ],
-                                            ),
-                                          ],
-                                        ),
-                                        SizedBox(height: 20),
-                                        Row(
-                                          children: [
-                                            Container(
-                                              child: Image.asset(
-                                                'assets/banhmi.png',
-                                                height: 60,
-                                              ),
-                                            ),
-                                            SizedBox(width: 30),
-                                            Column(
-                                              crossAxisAlignment: CrossAxisAlignment.start,
-                                              children: [
-                                                Text('Bánh Mì Gà', style: TextStyle(fontSize: 18),),
-                                                SizedBox(width: 20),
-                                                Text('Giá: 30.000')
-                                              ],
-                                            ),
-                                          ],
-                                        ),
-                                        SizedBox(height: 20),
-                                        Row(
-                                          children: [
-                                            Container(
-                                              child: Image.asset(
-                                                'assets/banhmi.png',
-                                                height: 60,
-                                              ),
-                                            ),
-                                            SizedBox(width: 30),
-                                            Column(
-                                              crossAxisAlignment: CrossAxisAlignment.start,
-                                              children: [
-                                                Text('Bánh Mì Thịt Nguội', style: TextStyle(fontSize: 18),),
-                                                SizedBox(width: 20),
-                                                Text('Giá: 30.000')
-                                              ],
-                                            ),
-                                          ],
-                                        ),
-
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                                // child: Container(
-                                //   child: Column(
-                                //     crossAxisAlignment: CrossAxisAlignment.start,
-                                //     children: [
-                                //       Container(
-                                //         child: Image.asset(
-                                //           'assets/banhmi.png',
-                                //           height: 70,
-                                //         ),
-                                //       ),
-                                //     ],
-                                //   ),
-                                // ),
-                              ),
-                            );
-                          });
-                    },
                     child: Container(
                       padding: EdgeInsets.all(8),
                       decoration: BoxDecoration(
@@ -179,151 +58,6 @@ class CategoryWidget extends StatelessWidget {
               child: Column(
                 children: [
                   ZoomTapAnimation(
-                    onTap: () {
-                      showModalBottomSheet(
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.only(
-                                  topRight: Radius.circular(20),
-                                  topLeft: Radius.circular(20)
-                              )
-                          ),
-                          context: context,
-                          isScrollControlled: true,
-                          builder: (context) {
-                            return FractionallySizedBox(
-                              heightFactor: 0.9,
-                              child: Padding(
-                                padding: const EdgeInsets.all(12),
-                                child: Container(
-                                  // width: 170,
-                                  // height: 200,
-                                  child: Padding(
-                                    padding: EdgeInsets.symmetric(horizontal: 10),
-                                    child: Column(
-                                      children: [
-                                        Text('Phở', style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),),
-                                        SizedBox(height: 30),
-                                        Row(
-                                          children: [
-                                            Container(
-                                              child: Image.asset(
-                                                'assets/pho.png',
-                                                height: 60,
-                                              ),
-                                            ),
-                                            SizedBox(width: 30),
-                                            Column(
-                                              crossAxisAlignment: CrossAxisAlignment.start,
-                                              children: [
-                                                Text('Phở Đặc Biệt', style: TextStyle(fontSize: 18),),
-                                                SizedBox(width: 20),
-                                                Text('Giá: 60.000')
-                                              ],
-                                            ),
-                                          ],
-                                        ),
-                                        SizedBox(height: 20),
-                                        Row(
-                                          children: [
-                                            Container(
-                                              child: Image.asset(
-                                                'assets/pho.png',
-                                                height: 60,
-                                              ),
-                                            ),
-                                            SizedBox(width: 30),
-                                            Column(
-                                              crossAxisAlignment: CrossAxisAlignment.start,
-                                              children: [
-                                                Text('Phở Tái', style: TextStyle(fontSize: 18),),
-                                                SizedBox(width: 20),
-                                                Text('Giá: 35.000')
-                                              ],
-                                            ),
-                                          ],
-                                        ),
-                                        SizedBox(height: 20),
-                                        Row(
-                                          children: [
-                                            Container(
-                                              child: Image.asset(
-                                                'assets/pho.png',
-                                                height: 60,
-                                              ),
-                                            ),
-                                            SizedBox(width: 30),
-                                            Column(
-                                              crossAxisAlignment: CrossAxisAlignment.start,
-                                              children: [
-                                                Text('Bánh Tái, Nạm', style: TextStyle(fontSize: 18),),
-                                                SizedBox(width: 20),
-                                                Text('Giá: 45.000')
-                                              ],
-                                            ),
-                                          ],
-                                        ),
-                                        SizedBox(height: 20),
-                                        Row(
-                                          children: [
-                                            Container(
-                                              child: Image.asset(
-                                                'assets/pho.png',
-                                                height: 60,
-                                              ),
-                                            ),
-                                            SizedBox(width: 30),
-                                            Column(
-                                              crossAxisAlignment: CrossAxisAlignment.start,
-                                              children: [
-                                                Text('Phở Tái, Gầu', style: TextStyle(fontSize: 18),),
-                                                SizedBox(width: 20),
-                                                Text('Giá: 40.000')
-                                              ],
-                                            ),
-                                          ],
-                                        ),
-                                        SizedBox(height: 20),
-                                        Row(
-                                          children: [
-                                            Container(
-                                              child: Image.asset(
-                                                'assets/pho.png',
-                                                height: 60,
-                                              ),
-                                            ),
-                                            SizedBox(width: 30),
-                                            Column(
-                                              crossAxisAlignment: CrossAxisAlignment.start,
-                                              children: [
-                                                Text('Phở Bò Viên', style: TextStyle(fontSize: 18),),
-                                                SizedBox(width: 20),
-                                                Text('Giá: 40.000')
-                                              ],
-                                            ),
-                                          ],
-                                        ),
-
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                                // child: Container(
-                                //   child: Column(
-                                //     crossAxisAlignment: CrossAxisAlignment.start,
-                                //     children: [
-                                //       Container(
-                                //         child: Image.asset(
-                                //           'assets/banhmi.png',
-                                //           height: 70,
-                                //         ),
-                                //       ),
-                                //     ],
-                                //   ),
-                                // ),
-                              ),
-                            );
-                          });
-                    },
                     child: Container(
                       padding: EdgeInsets.all(8),
                       decoration: BoxDecoration(
@@ -349,117 +83,12 @@ class CategoryWidget extends StatelessWidget {
                   Text('Phở', style: TextStyle(fontSize: 18)),
                 ],
               ),
-            ),
+            ), //Phở
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 10),
               child: Column(
                 children: [
                   ZoomTapAnimation(
-                    onTap: () {
-                      showModalBottomSheet(
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.only(
-                                  topRight: Radius.circular(20),
-                                  topLeft: Radius.circular(20)
-                              )
-                          ),
-                          context: context,
-                          isScrollControlled: true,
-                          builder: (context) {
-                            return FractionallySizedBox(
-                              heightFactor: 0.9,
-                              child: Padding(
-                                padding: const EdgeInsets.all(12),
-                                child: Container(
-                                  // width: 170,
-                                  // height: 200,
-                                  child: Padding(
-                                    padding: EdgeInsets.symmetric(horizontal: 10),
-                                    child: Column(
-                                      children: [
-                                        Text('Bánh Canh', style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),),
-                                        SizedBox(height: 30),
-                                        Row(
-                                          children: [
-                                            Container(
-                                              child: Image.asset(
-                                                'assets/banhcanhcua.jpg',
-                                                height: 60,
-                                              ),
-                                            ),
-                                            SizedBox(width: 30),
-                                            Column(
-                                              crossAxisAlignment: CrossAxisAlignment.start,
-                                              children: [
-                                                Text('Bánh Canh Cua Đặc Biệt', style: TextStyle(fontSize: 18),),
-                                                SizedBox(width: 20),
-                                                Text('Giá: 30.000')
-                                              ],
-                                            ),
-                                          ],
-                                        ),
-                                        SizedBox(height: 20),
-                                        Row(
-                                          children: [
-                                            Container(
-                                              child: Image.asset(
-                                                'assets/banhcanhcua.jpg',
-                                                height: 60,
-                                              ),
-                                            ),
-                                            SizedBox(width: 30),
-                                            Column(
-                                              crossAxisAlignment: CrossAxisAlignment.start,
-                                              children: [
-                                                Text('Bánh Canh Càng Cua', style: TextStyle(fontSize: 18),),
-                                                SizedBox(width: 20),
-                                                Text('Giá: 20.000')
-                                              ],
-                                            ),
-                                          ],
-                                        ),
-                                        SizedBox(height: 20),
-                                        Row(
-                                          children: [
-                                            Container(
-                                              child: Image.asset(
-                                                'assets/banhcanhcua.jpg',
-                                                height: 60,
-                                              ),
-                                            ),
-                                            SizedBox(width: 30),
-                                            Column(
-                                              crossAxisAlignment: CrossAxisAlignment.start,
-                                              children: [
-                                                Text('Bánh Canh Càng Cua', style: TextStyle(fontSize: 18),),
-                                                SizedBox(width: 20),
-                                                Text('Giá: 30.000')
-                                              ],
-                                            ),
-                                          ],
-                                        ),
-
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                                // child: Container(
-                                //   child: Column(
-                                //     crossAxisAlignment: CrossAxisAlignment.start,
-                                //     children: [
-                                //       Container(
-                                //         child: Image.asset(
-                                //           'assets/banhmi.png',
-                                //           height: 70,
-                                //         ),
-                                //       ),
-                                //     ],
-                                //   ),
-                                // ),
-                              ),
-                            );
-                          });
-                    },
                     child: Container(
                       padding: EdgeInsets.all(8),
                       decoration: BoxDecoration(
@@ -485,7 +114,7 @@ class CategoryWidget extends StatelessWidget {
                   Text('Bánh Canh', style: TextStyle(fontSize: 18)),
                 ],
               ),
-            ),
+            ), //Bánh canh
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 10),
               child: Column(
@@ -633,6 +262,61 @@ class CategoryWidget extends StatelessWidget {
             ),
           ],
         ),
+      ),
+    );
+  }
+  Widget _buildCategory() {
+    return Container(
+      padding: EdgeInsets.only(top: 10,left: 8, right: 8),
+      height: 120,
+      color: Colors.white,
+      alignment: Alignment.center,
+      child: ListView.builder(
+        scrollDirection: Axis.horizontal,
+        itemCount: controller.listCategory.value.length,
+        itemBuilder: (context, index) {
+          return InkWell(
+            onTap: () {
+              controller.setCategorySelect(index);
+            },
+            child:
+            _buildCategoryItem(controller.listCategory.value[index], index),
+          );
+        },
+      ),
+    );
+  }
+  Widget _buildCategoryItem(CategoryType categoryType, int index) {
+    return Container(
+      width: 100,
+      alignment: Alignment.center,
+      child: Column(
+        children: [
+          Image.asset(
+            controller.getImageCategory(categoryType),
+            width: 100,
+            height: 50,
+            fit: BoxFit.contain,
+          ),
+          SizedBox(
+            height: 10,
+          ),
+          Text(
+            controller.getTitleCategory(categoryType),
+            style: TextStyle(
+                fontSize: 16, fontWeight: FontWeight.bold, color: Colors.black),
+          ),
+          SizedBox(
+            height: 5,
+          ),
+          Container(
+            width: 120,
+            height: 5,
+            color: index == controller.indexSelect.value
+                ? Colors.red
+                : Colors.transparent,
+          )
+        ],
       ),
     );
   }
