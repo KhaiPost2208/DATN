@@ -264,6 +264,7 @@ class FoodOrderScreen extends StatelessWidget {
         padding: const EdgeInsets.all(14.0),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Text(
               'Món đã chọn',
@@ -273,11 +274,10 @@ class FoodOrderScreen extends StatelessWidget {
             ZoomTapAnimation(
               onTap: ()  {
                 Get.to(
-                            () => CartFood(),
-
-                      );
+                      () => CartFood(),
+                );
               },
-                child: Icon(CupertinoIcons.cart_fill, color: Colors.white, size: 44,)),
+                child: Icon(CupertinoIcons.cart_fill, color: Colors.white, size: 38,)),
           ],
         ),
       ),

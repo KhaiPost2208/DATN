@@ -54,7 +54,8 @@ class CartFood extends StatelessWidget {
                         padding: const EdgeInsets.all(14),
                         child: Text('Tổng cộng', style: TextStyle(
                           fontSize: 16, fontWeight: FontWeight.bold,
-                        ),),
+                        ),
+                        ),
                       ),
                     ),
                   )
