@@ -39,7 +39,7 @@ class FoodOrderScreen extends StatelessWidget {
                 ),
               ),
               Obx(
-                () => _addCart(),
+                () => _addCart(context),
               ),
             ],
           ),
@@ -266,7 +266,7 @@ class FoodOrderScreen extends StatelessWidget {
     );
   }
 
-  Widget _addCart() {
+  Widget _addCart(BuildContext context) {
     return Container(
       color: Colors.red[900],
       height: 60,
@@ -286,7 +286,33 @@ class FoodOrderScreen extends StatelessWidget {
 
             InkWell(
               onTap: () async {
-                var result = await Get.to(
+                  var tableName = await showModalBottomSheet(
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.only(
+                              topRight: Radius.circular(20),
+                              topLeft: Radius.circular(20)
+                          )
+                      ),
+                      context: context,
+                      isScrollControlled: true,
+                      builder: (context) {
+                        return FractionallySizedBox(
+                          heightFactor: 0.9,
+                          child: Padding(
+                            padding: const EdgeInsets.all(12),
+                            child: Container(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Text("Vui Lòng Chọn Bàn"),
+                                  FoodTableScreen(),
+                                ],
+                              ),
+                            ),
+                          ),
+                        );
+                      });
+                 var result = await Get.to(
                   () => FoodCartScreen(),
                   arguments: controller.listFoodCart.value,
                 );
