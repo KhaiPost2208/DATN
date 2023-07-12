@@ -3,6 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
+import 'package:zoom_tap_animation/zoom_tap_animation.dart';
 
 class CartFoodOrderController extends GetxController {
   var listFoodCart = Rx<List<Food>>([]);
@@ -47,13 +48,15 @@ class CartFoodOrderController extends GetxController {
           await Get.dialog(
             AlertDialog(
               //title: const Text('Dialog'),
-              content: const Text('Đặt hàng thành công'),
+              content: const Text('Đặt món thành công'),
               actions: [
-                TextButton(
-                  child: const Text("OK"),
-                  onPressed: () {
-                    Get.back(result: true);
-                  },
+                ZoomTapAnimation(
+                  child: TextButton(
+                    child: const Text("OK"),
+                    onPressed: () {
+                      Get.back(result: true);
+                    },
+                  ),
                 ),
               ],
             ),

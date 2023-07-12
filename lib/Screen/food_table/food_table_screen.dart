@@ -14,6 +14,9 @@ class FoodTableScreen extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
+          SizedBox(
+            height: 30,
+          ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
@@ -23,7 +26,7 @@ class FoodTableScreen extends StatelessWidget {
             ],
           ),
           SizedBox(
-            height: 20,
+            height: 30,
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -34,7 +37,7 @@ class FoodTableScreen extends StatelessWidget {
             ],
           ),
           SizedBox(
-            height: 20,
+            height: 30,
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -58,7 +61,15 @@ class FoodTableScreen extends StatelessWidget {
         width: 100,
         height: 130,
         decoration: BoxDecoration(
-            color: Colors.orange, borderRadius: BorderRadius.circular(20)),
+            color: Colors.orange, borderRadius: BorderRadius.circular(20),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black45,
+              blurRadius: 4,
+              offset: Offset(5, 8),
+            )
+          ]
+        ),
         child: Center(
             child: Text(
           tableName,

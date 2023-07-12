@@ -295,14 +295,16 @@ class FoodOrderScreen extends StatelessWidget {
                     isScrollControlled: true,
                     builder: (context) {
                       return FractionallySizedBox(
-                        heightFactor: 0.9,
+                        heightFactor: 0.8,
                         child: Padding(
-                          padding: const EdgeInsets.all(12),
+                          padding: const EdgeInsets.all(8),
                           child: Container(
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
-                                Text("Vui Lòng Chọn Bàn"),
+                                SizedBox(height: 20),
+                                Text("Vui Lòng Chọn Bàn", style: TextStyle(fontSize: 26, fontWeight: FontWeight.bold),),
+                                SizedBox(height: 20),
                                 FoodTableScreen(),
                               ],
                             ),
@@ -328,12 +330,12 @@ class FoodOrderScreen extends StatelessWidget {
                   Icon(
                     CupertinoIcons.cart_fill,
                     color: Colors.white,
-                    size: 40,
+                    size: 46,
                   ),
                   Text(
                     controller.quantityCart.value.toString(),
                     style: TextStyle(
-                      fontSize: 14,
+                      fontSize: 16,
                       fontWeight: FontWeight.bold,
                       color: Colors.red[900],
                     ),

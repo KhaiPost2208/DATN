@@ -38,13 +38,6 @@ class _MyHomePageState extends State<MyHomePage> {
                 padding: const EdgeInsets.all(19.0),
                 child: Container(
                   child: Column(
-                    // children: [
-                    //   Image.asset(
-                    //     'assets/avatar.png',
-                    //     //width: 50,
-                    //     height: 90,
-                    //   ),
-                    // ],
                   ),
                 ),
               ),

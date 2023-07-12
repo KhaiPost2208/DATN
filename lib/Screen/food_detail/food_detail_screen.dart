@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:image_network/image_network.dart';
 import 'package:zoom_tap_animation/zoom_tap_animation.dart';
 
+import '../HomePage/MyHome.dart';
 import '../food_cart/food_cart_screen.dart';
 import 'food_detail_controller.dart';
 
@@ -19,7 +20,7 @@ class FoodDetailScreen extends StatelessWidget {
           ZoomTapAnimation(
             onTap: () {
               Get.to(
-                () => FoodCartScreen(),
+                () => HomePage(),
               );
             },
             child: Padding(
@@ -190,48 +191,50 @@ class FoodDetailScreen extends StatelessWidget {
   }
 
   Widget _buildPrice() {
-    return Container(
-      height: 50,
-      width: 120,
-      // width: double.infinity,
-      //color: Colors.red,
-      alignment: Alignment.center,
-      margin: EdgeInsets.only(left: 20, right: 20),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(25),
-        color: Colors.red[900],
-      ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Text(
-            'THÊM',
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 12,
+    return ZoomTapAnimation(
+      child: Container(
+        height: 50,
+        width: 120,
+        // width: double.infinity,
+        //color: Colors.red,
+        alignment: Alignment.center,
+        margin: EdgeInsets.only(left: 20, right: 20),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(25),
+          color: Colors.red[900],
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              'THÊM',
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 12,
+              ),
             ),
-          ),
-          SizedBox(
-            width: 8,
-          ),
-          Text(
-            controller.price.toString(),
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 12,
+            SizedBox(
+              width: 8,
             ),
-          ),
-          SizedBox(
-            width: 8,
-          ),
-          Text(
-            'VNĐ',
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 12,
+            Text(
+              controller.price.toString(),
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 12,
+              ),
             ),
-          )
-        ],
+            SizedBox(
+              width: 8,
+            ),
+            Text(
+              'VNĐ',
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 12,
+              ),
+            )
+          ],
+        ),
       ),
     );
   }

@@ -9,6 +9,7 @@ import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:zoom_tap_animation/zoom_tap_animation.dart';
 import '../InformationFood/Information.dart';
+import '../activate_food/activate_food_screen.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -39,16 +40,11 @@ class _HomePageState extends State<HomePage> {
         Information(),
         Image.asset(
           'assets/thaytam.png',
-          height: 280,
+          height: 300,
         ),
       ],
     ),
     FoodOrderScreen(),
-    Container(
-      child: Center(
-        child: Text('Hoạt Động'),
-      ),
-    ),
     Center(
       child: Image.asset(
         'assets/bidv.jpg',
@@ -73,7 +69,11 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
           ZoomTapAnimation(
-            onTap: () {},
+            onTap: () {
+              Get.to(
+                    () => HomePage(),
+              );
+            },
             child: const ListTile(
               leading: Icon(
                 CupertinoIcons.home,
@@ -88,12 +88,13 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
           ZoomTapAnimation(
+            onTap: ()  {},
             child: ListTile(
               leading: Icon(
                 CupertinoIcons.cart,
               ),
               title: Text(
-                'Món đã đặt',
+                'Món đã đặt (Chỉ Dành Cho Bếp)',
                 style: TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
@@ -139,10 +140,10 @@ class _HomePageState extends State<HomePage> {
             icon: Icon(Icons.fastfood_outlined),
             label: 'Đặt Món',
           ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.history),
-            label: 'Hoạt Động',
-          ),
+          // BottomNavigationBarItem(
+          //   icon: Icon(Icons.history),
+          //   label: 'Hoạt Động',
+          // ),
           BottomNavigationBarItem(
             icon: Icon(Icons.payment),
             label: 'Thanh Toán',
