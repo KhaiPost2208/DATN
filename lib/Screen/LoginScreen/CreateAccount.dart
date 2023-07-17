@@ -1,4 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:zoom_tap_animation/zoom_tap_animation.dart';
 
 import 'MyHomePage.dart';
 import 'package:flutter/material.dart';
@@ -82,24 +85,30 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
               SizedBox(height: 20),
-              // Container(
-              //   width: 100,
-              //   height: 20,
-              //   child: Text('Tạo Tài Khoản'),
-              // )
               ElevatedButton(
                   onPressed: () {
                     FirebaseAuth.instance.createUserWithEmailAndPassword(
                         email: emailController.text.trim(),
                         password: passwordController.text.trim());
                   },
-                  child: Text("          Tạo tài khoản          "))
+                  child: ZoomTapAnimation(
+                      onTap: () => showDialog<String>(
+                        context: context,
+                        builder: (BuildContext context) => AlertDialog(
+                          content: Text('Tạo tài khoản thành công'),
+                          actions: <Widget>[
+                            TextButton(
+                              onPressed: () => Navigator.pop(context, 'OK'),
+                              child: const Text('OK'),
+                            ),
+                          ],
+                        ),
+                      ),
+                      child: Text("          Tạo tài khoản          ")))
             ],
           ),
         ),
       ),
     );
   }
-
-  void onSign() {}
 }

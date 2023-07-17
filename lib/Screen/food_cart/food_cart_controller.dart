@@ -61,7 +61,6 @@ class CartFoodOrderController extends GetxController {
               ],
             ),
           );
-
           Get.back(result: true);
         }
       }).catchError((error) {

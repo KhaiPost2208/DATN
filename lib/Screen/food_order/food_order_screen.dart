@@ -283,7 +283,6 @@ class FoodOrderScreen extends StatelessWidget {
                   fontWeight: FontWeight.bold,
                   color: Colors.white),
             ),
-
             InkWell(
               onTap: () async {
                 var tableName = await showModalBottomSheet(

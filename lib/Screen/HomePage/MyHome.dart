@@ -10,6 +10,7 @@ import 'package:get/get_core/src/get_main.dart';
 import 'package:zoom_tap_animation/zoom_tap_animation.dart';
 import '../InformationFood/Information.dart';
 import '../activate_food/activate_food_screen.dart';
+import '../payment_screen/payment_screen.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -45,13 +46,14 @@ class _HomePageState extends State<HomePage> {
       ],
     ),
     FoodOrderScreen(),
-    Center(
-      child: Image.asset(
-        'assets/bidv.jpg',
-        width: 700,
-        height: 700,
-      ),
-    ),
+    PaymentScreen(),
+    // Center(
+    //   child: Image.asset(
+    //     'assets/bidv.jpg',
+    //     width: 700,
+    //     height: 700,
+    //   ),
+    // ),
     Center(
       child: ListView(
         children: [
