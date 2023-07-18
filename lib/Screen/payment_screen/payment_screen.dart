@@ -11,12 +11,15 @@ class PaymentScreen extends StatelessWidget {
     return Container(
       child: Column(
         children: [
-          Padding(
-            padding: const EdgeInsets.only(top: 24),
-            child: Image.asset(
-              'assets/bidv.jpg',
+            Padding(
+              padding: const EdgeInsets.only(top: 20),
+              child: Center(
+                child: Image.asset(
+                  'assets/bidv.jpg',
+                  width: 400,
+                ),
+              ),
             ),
-          ),
           ZoomTapAnimation(
             onTap: () {
               showModalBottomSheet(

@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:zoom_tap_animation/zoom_tap_animation.dart';
+import '../../kitchen_screen/kitchen_screen.dart';
 import '../InformationFood/Information.dart';
 import '../activate_food/activate_food_screen.dart';
 import '../payment_screen/payment_screen.dart';
@@ -90,7 +91,11 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
           ZoomTapAnimation(
-            onTap: ()  {},
+            onTap: ()  {
+              Get.to(
+                    () => Kitchen(),
+              );
+            },
             child: ListTile(
               leading: Icon(
                 CupertinoIcons.cart,
@@ -167,3 +172,4 @@ class _HomePageState extends State<HomePage> {
     );
   }
 }
+

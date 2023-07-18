@@ -108,7 +108,7 @@ class Information extends StatelessWidget {
                         ),
                         SizedBox(height: 8),
                         Text(
-                          "Phở Việt Nam",
+                          "Phở Việt",
                           style: TextStyle(
                             fontSize: 24,
                             fontWeight: FontWeight.bold,
