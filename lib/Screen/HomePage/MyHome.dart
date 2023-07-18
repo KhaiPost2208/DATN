@@ -1,4 +1,5 @@
 import 'package:appdatn/Screen/HomePage/CategoryWidget.dart';
+import 'package:appdatn/Screen/food_kitchen/food_kitchen_screen.dart';
 import 'package:appdatn/Screen/food_order/food_order_screen.dart';
 import 'package:buttons_tabbar/buttons_tabbar.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -73,7 +74,7 @@ class _HomePageState extends State<HomePage> {
           ZoomTapAnimation(
             onTap: () {
               Get.to(
-                    () => HomePage(),
+                () => HomePage(),
               );
             },
             child: const ListTile(
@@ -90,7 +91,11 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
           ZoomTapAnimation(
-            onTap: ()  {},
+            onTap: () {
+              Get.to(
+                () => FoodKitchenScreen(),
+              );
+            },
             child: ListTile(
               leading: Icon(
                 CupertinoIcons.cart,
