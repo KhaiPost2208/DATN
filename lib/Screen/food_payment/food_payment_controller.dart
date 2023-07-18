@@ -12,6 +12,7 @@ class FoodPaymentController extends GetxController {
 
   var heightScreen = Get.height;
   var isLoading = false.obs;
+  var isShowNoPayment = false.obs;
 
   @override
   Future<void> onInit() async {
@@ -24,6 +25,10 @@ class FoodPaymentController extends GetxController {
     listFood.value.forEach((element) {
       totalPayment += ((element.price ?? 0) * (element.quantity ?? 0));
     });
+
+    if (listFood.value.isEmpty) {
+      isShowNoPayment.value = true;
+    }
   }
 
   Future<List<Food>> getDataFood() async {

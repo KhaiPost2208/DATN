@@ -18,12 +18,29 @@ class FoodPaymentScreen extends StatelessWidget {
         child: Stack(
           children: [
             Obx(
-              () => Column(
-                children: [
-                  Expanded(child: _buildListFood()),
-                  _buildTotal(),
-                  _buildPayment(),
-                ],
+              () => Visibility(
+                visible: controller.listFood.value.isNotEmpty,
+                child: Column(
+                  children: [
+                    Expanded(child: _buildListFood()),
+                    _buildTotal(),
+                    _buildPayment(),
+                  ],
+                ),
+              ),
+            ),
+            Obx(
+              () => Container(
+                alignment: Alignment.center,
+                child: Visibility(
+                    visible: controller.isShowNoPayment.value,
+                    child: Text(
+                      'Chưa có đơn hàng',
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 16,
+                      ),
+                    )),
               ),
             ),
             Obx(
