@@ -14,6 +14,17 @@ class FoodKitchenScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('Bếp'),
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(
+              Icons.refresh,
+              color: Colors.white,
+            ),
+            onPressed: () {
+              controller.getData();
+            },
+          ),
+        ],
       ),
       body: Container(
         child: Stack(

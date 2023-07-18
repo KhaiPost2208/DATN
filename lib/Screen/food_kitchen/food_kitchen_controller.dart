@@ -1,10 +1,8 @@
 import 'package:appdatn/entity/food.dart';
 import 'package:appdatn/entity/food_kitchen.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
-import 'package:zoom_tap_animation/zoom_tap_animation.dart';
 
 class FoodKitchenController extends GetxController {
   var listTable = [
@@ -28,6 +26,11 @@ class FoodKitchenController extends GetxController {
   @override
   Future<void> onInit() async {
     super.onInit();
+    getData();
+  }
+
+  void getData() {
+    listFoodKitchen.value = [];
 
     listTable.forEach((tableName) async {
       isLoading.value = true;
