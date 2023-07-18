@@ -32,8 +32,9 @@ class CartFoodOrderController extends GetxController {
 
       String dateFormat = DateFormat('dd-MM-yyyy').format(DateTime.now());
       var docId = '${food.name}_${DateTime.now().toString()}';
-      foodOrder.doc(tableName).collection(dateFormat).doc(docId).set(
+      foodOrder.doc(dateFormat).collection(tableName).doc(docId).set(
         {
+          'food_id': docId,
           'table_name': tableName,
           'thub': food.thumb,
           'name': food.name ?? '',

@@ -1,4 +1,5 @@
 class Food {
+  String? foodId;
   String? name;
   int? price;
   String? priceFormat;
@@ -8,6 +9,7 @@ class Food {
   int? quantity;
 
   Food({
+    this.foodId,
     this.name,
     this.price,
     this.desc,
@@ -18,12 +20,13 @@ class Food {
   });
 
   Food.fromJson(Map<String, dynamic> json) {
+    foodId = json['foodId'];
     name = json['name'];
     desc = json['desc'];
     price = json['price'];
     priceFormat = json['priceFormat'];
     thumb = json['thumb'];
     note = json['note'];
-    quantity =json['quantity'];
+    quantity = json['quantity'];
   }
 }
