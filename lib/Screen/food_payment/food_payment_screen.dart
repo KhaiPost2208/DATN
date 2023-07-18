@@ -35,10 +35,10 @@ class FoodPaymentScreen extends StatelessWidget {
                 child: Visibility(
                     visible: controller.isShowNoPayment.value,
                     child: Text(
-                      'Chưa có đơn hàng',
+                      'Chưa Đặt Món',
                       style: TextStyle(
                         color: Colors.black,
-                        fontSize: 16,
+                        fontSize: 20,
                       ),
                     )),
               ),
