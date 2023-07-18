@@ -8,6 +8,7 @@ import 'package:zoom_tap_animation/zoom_tap_animation.dart';
 class CartFoodOrderController extends GetxController {
   var listFoodCart = Rx<List<Food>>([]);
   var tableName = '';
+  var totalPayment = 0.obs;
 
   var heightScreen = Get.height;
   var isLoading = false.obs;
@@ -19,6 +20,10 @@ class CartFoodOrderController extends GetxController {
     tableName = Get.arguments['TableName'];
     listFoodCart.value = Get.arguments['ListFood'];
     listFoodCart.refresh();
+
+    listFoodCart.value.forEach((element) {
+      totalPayment += ((element.price ?? 0) * (element.quantity ?? 0));
+    });
   }
 
   void addFoodToFirebase() async {
@@ -32,8 +37,9 @@ class CartFoodOrderController extends GetxController {
 
       String dateFormat = DateFormat('dd-MM-yyyy').format(DateTime.now());
       var docId = '${food.name}_${DateTime.now().toString()}';
-      foodOrder.doc(tableName).collection(dateFormat).doc(docId).set(
+      foodOrder.doc(dateFormat).collection(tableName).doc(docId).set(
         {
+          'food_id': docId,
           'table_name': tableName,
           'thub': food.thumb,
           'name': food.name ?? '',
@@ -67,5 +73,33 @@ class CartFoodOrderController extends GetxController {
         isLoading.value = false;
       });
     });
+  }
+
+  void confirmDelete() {
+    Get.dialog(
+      AlertDialog(
+        content: const Text('Xoá đơn hàng?'),
+        actions: [
+          ZoomTapAnimation(
+            child: TextButton(
+              child: const Text("Cancel"),
+              onPressed: () {
+                Get.back();
+              },
+            ),
+          ),
+          ZoomTapAnimation(
+            child: TextButton(
+              child: const Text("OK"),
+              onPressed: () {
+                listFoodCart.value = [];
+                Get.back();
+                Get.back(result: true);
+              },
+            ),
+          ),
+        ],
+      ),
+    );
   }
 }
