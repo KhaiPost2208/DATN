@@ -63,7 +63,7 @@ class FoodKitchenController extends GetxController {
         var price = doc["price"];
         var quantity = doc['quantity'];
         var food =
-            Food(foodId: foodId, name: name, price: price, quantity: quantity);
+        Food(foodId: foodId, name: name, price: price, quantity: quantity);
         list.add(food);
       });
     });

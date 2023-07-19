@@ -97,13 +97,14 @@ class FoodKitchenScreen extends StatelessWidget {
             child: Text(
               foodKitchen.tableName,
               style: TextStyle(
-                fontSize: 16,
+                fontSize: 22,
                 color: Colors.black,
                 fontWeight: FontWeight.bold,
               ),
             ),
           ),
           Container(
+            // color: Colors.amber,
               height: (foodKitchen.listFood?.length ?? 0) * heightItem,
               child: _buildListFood(foodKitchen.listFood ?? [])),
         ],
@@ -139,7 +140,7 @@ class FoodKitchenScreen extends StatelessWidget {
           Text(
             '(${food.quantity.toString()}x)',
             style: TextStyle(
-              fontSize: 14,
+              fontSize: 16,
               color: Colors.black,
             ),
           ),
@@ -150,7 +151,7 @@ class FoodKitchenScreen extends StatelessWidget {
             child: Text(
               food.name.toString(),
               style: TextStyle(
-                fontSize: 14,
+                fontSize: 16,
                 color: Colors.black,
               ),
             ),
