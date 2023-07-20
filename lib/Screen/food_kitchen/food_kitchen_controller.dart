@@ -29,23 +29,44 @@ class FoodKitchenController extends GetxController {
     getData();
   }
 
-  void getData() {
+  Future<void> getData() async {
     listFoodKitchen.value = [];
 
-    listTable.forEach((tableName) async {
-      isLoading.value = true;
-      var foodKitchen = await getDataFoodKitchen(tableName);
-      isLoading.value = false;
+    isLoading.value = true;
+    for (var i = 0; i < listTable.length; i++) {
+      var foodKitchen = await getDataFoodKitchen(listTable[i]);
+
       if (foodKitchen.listFood?.isNotEmpty == true) {
         listFoodKitchen.value.add(foodKitchen);
         listFoodKitchen.refresh();
       }
-    });
 
-    if (listFoodKitchen.value.isNotEmpty) {
-      isShowNoData.value = true;
+      if (i == listTable.length - 1) {
+        isLoading.value = false;
+        if (listFoodKitchen.value.isEmpty) {
+          isShowNoData.value = true;
+        }
+      }
     }
   }
+
+  // void getData() {
+  //   listFoodKitchen.value = [];
+  //
+  //   listTable.forEach((tableName) async {
+  //     isLoading.value = true;
+  //     var foodKitchen = await getDataFoodKitchen(tableName);
+  //     isLoading.value = false;
+  //     if (foodKitchen.listFood?.isNotEmpty == true) {
+  //       listFoodKitchen.value.add(foodKitchen);
+  //       listFoodKitchen.refresh();
+  //     }
+  //   });
+  //
+  //   if (listFoodKitchen.value.isNotEmpty) {
+  //     isShowNoData.value = true;
+  //   }
+  // }
 
   Future<FoodKitchen> getDataFoodKitchen(String tableName) async {
     var list = <Food>[];

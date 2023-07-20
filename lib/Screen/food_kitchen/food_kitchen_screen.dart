@@ -21,7 +21,10 @@ class FoodKitchenScreen extends StatelessWidget {
               color: Colors.white,
             ),
             onPressed: () {
-              controller.getData();
+              if(!controller.isLoading.value) {
+                controller.getData();
+              }
+
             },
           ),
         ],
@@ -104,7 +107,6 @@ class FoodKitchenScreen extends StatelessWidget {
             ),
           ),
           Container(
-            // color: Colors.amber,
               height: (foodKitchen.listFood?.length ?? 0) * heightItem,
               child: _buildListFood(foodKitchen.listFood ?? [])),
         ],
@@ -118,7 +120,7 @@ class FoodKitchenScreen extends StatelessWidget {
         scrollDirection: Axis.vertical,
         physics: NeverScrollableScrollPhysics(),
         //separatorBuilder: (BuildContext context, int index) => const Divider(),
-        itemCount: controller.listFoodKitchen.value.length,
+        itemCount: listFood.length,
         itemBuilder: (context, index) {
           return _buildItemFood(listFood[index]);
         },
