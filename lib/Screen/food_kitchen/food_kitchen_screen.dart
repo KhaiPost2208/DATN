@@ -24,7 +24,6 @@ class FoodKitchenScreen extends StatelessWidget {
               if(!controller.isLoading.value) {
                 controller.getData();
               }
-
             },
           ),
         ],

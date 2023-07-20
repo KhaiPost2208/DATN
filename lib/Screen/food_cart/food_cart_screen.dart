@@ -141,8 +141,8 @@ class FoodCartScreen extends StatelessWidget {
           Text(
             'Tổng:',
             style: TextStyle(
-              fontSize: 18,
-              color: Colors.red,
+              fontSize: 22,
+              color: Colors.black,
               fontWeight: FontWeight.bold,
             ),
           ),
@@ -150,10 +150,10 @@ class FoodCartScreen extends StatelessWidget {
             child: Container(
               alignment: Alignment.centerRight,
               child: Text(
-                '${total} vnd',
+                '${total} VNĐ',
                 style: TextStyle(
-                  fontSize: 18,
-                  color: Colors.red,
+                  fontSize: 22,
+                  color: Colors.black,
                   fontWeight: FontWeight.bold,
                 ),
               ),

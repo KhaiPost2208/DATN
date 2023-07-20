@@ -110,7 +110,7 @@ class FoodPaymentScreen extends StatelessWidget {
             ),
           ),
           Text(
-            '${totalFormat} vnd',
+            '${totalFormat} VNĐ',
             style: TextStyle(
               fontSize: 14,
               color: Colors.black,
@@ -137,8 +137,8 @@ class FoodPaymentScreen extends StatelessWidget {
           Text(
             'Tổng:',
             style: TextStyle(
-              fontSize: 18,
-              color: Colors.red,
+              fontSize: 22,
+              color: Colors.black,
               fontWeight: FontWeight.bold,
             ),
           ),
@@ -146,10 +146,10 @@ class FoodPaymentScreen extends StatelessWidget {
             child: Container(
               alignment: Alignment.centerRight,
               child: Text(
-                '${total} vnd',
+                '${total} VNĐ',
                 style: TextStyle(
-                  fontSize: 18,
-                  color: Colors.red,
+                  fontSize: 22,
+                  color: Colors.black,
                   fontWeight: FontWeight.bold,
                 ),
               ),
