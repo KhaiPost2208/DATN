@@ -14,75 +14,78 @@ class PaymentScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.only(top: 24),
-            child: Image.asset(
-              'assets/bidv.jpg',
+      child: Padding(
+        padding: const EdgeInsets.only(top: 30),
+        child: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(top: 24),
+              child: Image.asset(
+                'assets/bidv.jpg',
+              ),
             ),
-          ),
-          Obx(
-                () => Visibility(
-              visible: controller.totalPayment.value > 0,
-              child: Text(
-                controller.getTotalPayment(),
-                style: TextStyle(
-                  color: Colors.red,
-                  fontSize: 14,
+            Obx(
+              () => Visibility(
+                visible: controller.totalPayment.value > 0,
+                child: Text(
+                  controller.getTotalPayment(),
+                  style: TextStyle(
+                    color: Colors.red,
+                    fontSize: 20,
+                  ),
                 ),
               ),
             ),
-          ),
-          SizedBox(
-            height: 10,
-          ),
-          ZoomTapAnimation(
-            onTap: () async {
-              var tableName = await showModalBottomSheet(
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.only(
-                          topRight: Radius.circular(20),
-                          topLeft: Radius.circular(20))),
-                  context: context,
-                  isScrollControlled: true,
-                  builder: (context) {
-                    return FractionallySizedBox(
-                      heightFactor: 0.7,
-                      child: Padding(
-                        padding: const EdgeInsets.all(12),
-                        child: FoodTableScreen(),
-                      ),
-                    );
-                  });
+            SizedBox(
+              height: 10,
+            ),
+            ZoomTapAnimation(
+              onTap: () async {
+                var tableName = await showModalBottomSheet(
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.only(
+                            topRight: Radius.circular(20),
+                            topLeft: Radius.circular(20))),
+                    context: context,
+                    isScrollControlled: true,
+                    builder: (context) {
+                      return FractionallySizedBox(
+                        heightFactor: 0.7,
+                        child: Padding(
+                          padding: const EdgeInsets.all(12),
+                          child: FoodTableScreen(),
+                        ),
+                      );
+                    });
 
-              var totalPayment = await Get.to(
-                    () => FoodPaymentScreen(),
-                arguments: {
-                  'TableName': tableName,
-                },
-              );
+                var totalPayment = await Get.to(
+                  () => FoodPaymentScreen(),
+                  arguments: {
+                    'TableName': tableName,
+                  },
+                );
 
-              controller.totalPayment.value = totalPayment;
-            },
-            child: Container(
-              height: 40,
-              width: 80,
-              alignment: Alignment.center,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
-                color: Colors.red[900],
-              ),
-              child: Text(
-                'Số Bàn',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 16,
+                controller.totalPayment.value = totalPayment;
+              },
+              child: Container(
+                height: 40,
+                width: 80,
+                alignment: Alignment.center,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  color: Colors.red[900],
+                ),
+                child: Text(
+                  'Số Bàn',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 16,
+                  ),
                 ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

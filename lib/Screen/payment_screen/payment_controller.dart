@@ -13,7 +13,7 @@ class PaymentController extends GetxController {
     if (totalPayment.value > 0) {
       var currencyFormatter = NumberFormat('#,###', 'ID');
       var totalFormat = currencyFormatter.format(totalPayment.value);
-      return '$totalFormat vnd';
+      return '$totalFormat VNĐ';
     }
 
     return '';

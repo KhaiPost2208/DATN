@@ -40,7 +40,7 @@ class FoodKitchenScreen extends StatelessWidget {
                 child: Visibility(
                     visible: controller.isShowNoData.value,
                     child: Text(
-                      'Chưa có món',
+                      '', // Chưa có món bị lỗi khi lần đầu đặt
                       style: TextStyle(
                         color: Colors.black,
                         fontSize: 16,
@@ -87,7 +87,6 @@ class FoodKitchenScreen extends StatelessWidget {
 
   Widget _buildItemFoodKitchen(FoodKitchen foodKitchen) {
     var heightItem = 40.0;
-
     var heightView = ((foodKitchen.listFood?.length ?? 0) + 1) * heightItem;
     return Container(
       height: heightView,
